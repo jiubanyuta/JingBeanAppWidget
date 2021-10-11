@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
         }
 
         setting.setOnClickListener {
-            val intent = Intent(this,SettingActivity::class.java)
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
 
