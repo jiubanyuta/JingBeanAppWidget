@@ -39,7 +39,7 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getUserInfo(path: String, callback: StringCallBack?) {
+    fun getUserInfo(callback: StringCallBack?) {
         var str = getCK()
         if (TextUtils.isEmpty(str)) return
         str =
@@ -47,13 +47,36 @@ object HttpUtil {
         str = str + "Accept-Language" + "=" + "zh-cn;"
         str = str + "Referer" + "=" + "https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&"
         str = str + "Accept-Encoding" + "=" + "gzip, deflate, br"
-        OkGo.get<String>(path)
+        OkGo.get<String>("https://me-api.jd.com/user_new/info/GetJDUserInfoUnion")
             .tag("context")
             .headers("Host", "me-api.jd.com")
             .headers("Accept", "*/*")
             .headers("Connection", "keep-alive")
             .headers("Cookie", str)
 
+            .execute(object : StringCallback() {
+                override fun onSuccess(response: Response<String>) {
+                    callback?.onSuccess(response.body())
+                }
+
+                override fun onError(response: Response<String>) {
+                    super.onError(response)
+                }
+            })
+    }
+
+    @JvmOverloads
+    fun getUserInfo1(callback: StringCallBack?) {
+        var str = getCK()
+        if (TextUtils.isEmpty(str)) return
+        OkGo.get<String>("https://wxapp.m.jd.com/kwxhome/myJd/home.json?&useGuideModule=0&bizId=&brandId=&fromType=wxapp&timestamp=" + System.currentTimeMillis())
+            .tag("context")
+            .headers("Cookie", str)
+            .headers("content-type", "application/x-www-form-urlencoded")
+            .headers("Connection", "keep-alive")
+            .headers("Referer", "https://servicewechat.com/wxa5bf5ee667d91626/161/page-frame.html")
+            .headers("Host", "wxapp.m.jd.com")
+            .headers("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.10(0x18000a2a) NetType/WIFI Language/zh_CN")
             .execute(object : StringCallback() {
                 override fun onSuccess(response: Response<String>) {
                     callback?.onSuccess(response.body())

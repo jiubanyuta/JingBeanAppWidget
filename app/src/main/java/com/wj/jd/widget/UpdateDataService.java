@@ -80,6 +80,7 @@ public class UpdateDataService extends Service {
         manager.updateAppWidget(componentName, remoteViews);
 
         getUserInfo();
+        getUserInfo1();
         page = 1;
         UserBean.INSTANCE.setTodayBean(0);
         UserBean.INSTANCE.setAgo1Bean(0);
@@ -194,7 +195,7 @@ public class UpdateDataService extends Service {
     }
 
     private void getUserInfo() {
-        HttpUtil.INSTANCE.getUserInfo("https://me-api.jd.com/user_new/info/GetJDUserInfoUnion", new StringCallBack() {
+        HttpUtil.INSTANCE.getUserInfo( new StringCallBack() {
             @Override
             public void onSuccess(@NonNull String result) {
                 try {
@@ -212,6 +213,27 @@ public class UpdateDataService extends Service {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    setData();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
+    }
+
+    private void getUserInfo1() {
+        HttpUtil.INSTANCE.getUserInfo1(new StringCallBack() {
+            @Override
+            public void onSuccess(@NonNull String result) {
+                Log.i("====",result);
+                try {
+                    JSONObject job = new JSONObject(result);
                     setData();
                 } catch (Exception e) {
                     e.printStackTrace();
