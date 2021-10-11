@@ -16,12 +16,12 @@
         android:layout_height="@dimen/dp_40">
 
         <TextView
+            android:id="@+id/title"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
             android:textSize="@dimen/sp_17"
             android:textColor="#FFFFFF"
-            android:text="京东桌面小组件设置"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

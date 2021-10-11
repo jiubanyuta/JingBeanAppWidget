@@ -14,6 +14,7 @@ class SettingActivity : BaseActivity() {
     }
 
     override fun initView() {
+        setTitle("小组件设置")
     }
 
     override fun initData() {

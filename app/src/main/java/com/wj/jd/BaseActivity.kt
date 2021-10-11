@@ -2,6 +2,7 @@ package com.wj.jd
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ktx.immersionBar
 
@@ -10,10 +11,12 @@ import com.gyf.immersionbar.ktx.immersionBar
  */
 abstract class BaseActivity : AppCompatActivity() {
     private var barView: View? = null
+    private var titleTv: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(setLayoutId())
         barView = findViewById(R.id.barView)
+        titleTv = findViewById(R.id.title)
         immersionBar {
             statusBarColor(R.color.colorPrimary)
             statusBarView(barView)
@@ -32,4 +35,8 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract fun initView()
     protected abstract fun initData()
     protected abstract fun setEvent()
+
+    fun setTitle(str: String) {
+        titleTv?.text = str
+    }
 }

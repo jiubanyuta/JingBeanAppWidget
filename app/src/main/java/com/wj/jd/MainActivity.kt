@@ -14,6 +14,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
+        setTitle("京豆")
     }
 
     override fun initData() {
@@ -36,6 +37,11 @@ class MainActivity : BaseActivity() {
             val intent = Intent()
             intent.action = "android.intent.action.VIEW"
             intent.data = Uri.parse("http://a.wangjing520.cn:5701/")
+            startActivity(intent)
+        }
+
+        setting.setOnClickListener {
+            val intent = Intent(this,SettingActivity::class.java)
             startActivity(intent)
         }
 
