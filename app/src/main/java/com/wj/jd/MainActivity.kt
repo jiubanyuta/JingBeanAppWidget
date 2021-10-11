@@ -125,7 +125,7 @@ class MainActivity : BaseActivity() {
 
                 override fun completed(task: BaseDownloadTask) {
                     pd.dismiss()
-                    val file = File(task.path + task.filename)
+                    val file = File(apkName)
                     installApk(file)
                 }
             }).start()
