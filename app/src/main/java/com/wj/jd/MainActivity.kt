@@ -6,6 +6,8 @@ import android.net.Uri
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import com.google.gson.Gson
+import com.wj.jd.bean.VersionBean
 import com.wj.jd.util.CacheUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
@@ -29,7 +31,17 @@ class MainActivity : BaseActivity() {
     private fun checkAppUpdate() {
         HttpUtil.getAppVer(object : StringCallBack {
             override fun onSuccess(result: String) {
-                Log.i("====getAppVer", result)
+                try {
+                    var gson = Gson()
+                    val versionBean = gson.fromJson(result, VersionBean::class.java)
+                    if ("1".equals(versionBean.isUpdate)) {
+                        Toast.makeText(this@MainActivity, "当前已是最新版本", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@MainActivity, "当前已是最新版本", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
 
             override fun onFail() {
