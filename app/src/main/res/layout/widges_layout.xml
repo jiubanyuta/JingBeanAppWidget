@@ -72,14 +72,14 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_4"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/shape_red"
+                            android:background="@drawable/shape_blue"
                             android:gravity="center"
                             android:paddingLeft="@dimen/dp_4"
                             android:paddingRight="@dimen/dp_4"
@@ -88,7 +88,7 @@
                             android:textSize="@dimen/sp_8" />
 
                         <TextView
-                            android:text="XXXX"
+                            android:text="----"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
