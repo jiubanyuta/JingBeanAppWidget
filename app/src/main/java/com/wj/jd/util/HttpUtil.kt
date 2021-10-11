@@ -23,24 +23,12 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getAppVer(path: String, callback: StringCallBack?) {
-        var str = getCK()
-        if (TextUtils.isEmpty(str)) return
-        str =
-            str + "User-Agent" + "=" + "jdapp;iPhone;10.0.2;14.3;network/wifi;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1;"
-        str = str + "Accept-Language" + "=" + "zh-cn;"
-        str = str + "Referer" + "=" + "https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&"
-        str = str + "Accept-Encoding" + "=" + "gzip, deflate, br"
-        OkGo.get<String>(path)
+    fun getAppVer(callback: StringCallBack?) {
+        OkGo.get<String>("http://101.35.95.165/update")
             .tag("context")
-            .headers("Host", "me-api.jd.com")
-            .headers("Accept", "*/*")
-            .headers("Connection", "keep-alive")
-            .headers("Cookie", str)
 
             .execute(object : StringCallback() {
                 override fun onSuccess(response: Response<String>) {
-                    Log.i("====出参解密", response.body())
                     callback?.onSuccess(response.body())
                 }
 
@@ -68,7 +56,6 @@ object HttpUtil {
 
             .execute(object : StringCallback() {
                 override fun onSuccess(response: Response<String>) {
-                    Log.i("====出参解密", response.body())
                     callback?.onSuccess(response.body())
                 }
 
@@ -96,7 +83,6 @@ object HttpUtil {
 
             .execute(object : StringCallback() {
                 override fun onSuccess(response: Response<String>) {
-                    Log.i("====出参解密", response.body())
                     callback?.onSuccess(response.body())
                 }
 
@@ -129,6 +115,7 @@ object HttpUtil {
                 }
             })
     }
+
 
     private fun cancel(tag: Any) {
         OkGo.getInstance().cancelTag(tag)

@@ -4,8 +4,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import com.wj.jd.util.CacheUtil
+import com.wj.jd.util.HttpUtil
+import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.UpdateDataService
 
 class MainActivity : BaseActivity() {
@@ -24,6 +27,15 @@ class MainActivity : BaseActivity() {
     }
 
     private fun checkAppUpdate() {
+        HttpUtil.getAppVer(object : StringCallBack {
+            override fun onSuccess(result: String) {
+                Log.i("====getAppVer", result)
+            }
+
+            override fun onFail() {
+            }
+
+        })
     }
 
     private fun startUpdateService() {
