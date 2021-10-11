@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.google.gson.Gson;
 import com.wj.jd.bean.JingDouBean;
 import com.wj.jd.bean.RedPacket;
 import com.wj.jd.bean.UserBean;
+import com.wj.jd.util.CacheUtil;
 import com.wj.jd.util.HttpUtil;
 import com.wj.jd.util.BitmapUtil;
 import com.wj.jd.util.TimeUtil;
@@ -225,6 +227,14 @@ public class UpdateDataService extends Service {
     }
 
     private void setData() {
+        if ("1" == CacheUtil.INSTANCE.getString("hideTips")) {
+            remoteViews.setViewVisibility(R.id.updateTime, View.GONE);
+            remoteViews.setViewVisibility(R.id.tips, View.GONE);
+        } else {
+            remoteViews.setViewVisibility(R.id.updateTime, View.VISIBLE);
+            remoteViews.setViewVisibility(R.id.tips, View.VISIBLE);
+        }
+
         remoteViews.setTextViewText(R.id.nickName, UserBean.INSTANCE.getNickName());
         remoteViews.setTextViewText(R.id.beanNum, UserBean.INSTANCE.getBeanNum());
         remoteViews.setTextViewText(R.id.todayBean, "+" + UserBean.INSTANCE.getTodayBean());
@@ -234,7 +244,7 @@ public class UpdateDataService extends Service {
         remoteViews.setTextViewText(R.id.hongbao, UserBean.INSTANCE.getHb());
         remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean.INSTANCE.getGqhb());
 
-        if(TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())){
+        if (TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())) {
             Glide.with(MyApplication.mInstance)
                     .load(R.mipmap.icon_head_def)
                     .into(new SimpleTarget<Drawable>() {
@@ -255,7 +265,7 @@ public class UpdateDataService extends Service {
                             manager.updateAppWidget(componentName, remoteViews);
                         }
                     });
-        }else{
+        } else {
             Glide.with(MyApplication.mInstance)
                     .load(UserBean.INSTANCE.getHeadImageUrl())
                     .into(new SimpleTarget<Drawable>() {
