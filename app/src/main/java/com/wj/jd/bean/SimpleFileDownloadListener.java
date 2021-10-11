@@ -35,6 +35,7 @@ public class SimpleFileDownloadListener extends FileDownloadListener {
     @Override
     protected void error(BaseDownloadTask task, Throwable e) {
         Log.i("====","error");
+        Log.i("====",e.toString());
     }
 
     @Override

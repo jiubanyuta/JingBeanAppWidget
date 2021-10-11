@@ -107,15 +107,16 @@ class MainActivity : BaseActivity() {
         pd.setCancelable(false)
         pd.show()
 
-        Log.i("====", Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files")
-        val file = File(Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files")
+        var pathParent = Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files"
+        var apkName = pathParent + System.currentTimeMillis() + ".apk"
+        val file = File(pathParent)
         if (!file.exists()) {
             file.mkdirs()
         }
 
         FileDownloader.setup(this)
         FileDownloader.getImpl().create(contentUrl)
-            .setPath(Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files/" + System.currentTimeMillis() + ".apk")
+            .setPath(apkName)
             .setListener(object : SimpleFileDownloadListener() {
                 override fun progress(task: BaseDownloadTask?, soFarBytes: Int, totalBytes: Int) {
                     val per = soFarBytes / (totalBytes / 100)
