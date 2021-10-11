@@ -29,6 +29,19 @@
 
     <Button
         android:visibility="visible"
+        android:id="@+id/setting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_25"
+        android:background="@drawable/background_count_down_bac"
+        android:text="小组件设置"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+
+    <Button
+        android:visibility="visible"
         android:id="@+id/noCK"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
