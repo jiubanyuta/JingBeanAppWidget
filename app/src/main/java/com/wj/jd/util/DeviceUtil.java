@@ -10,11 +10,11 @@ public class DeviceUtil {
     /**
      * 获取当前app version name
      */
-    public static String getAppVersionName(Context context) {
+    public static String getAppVersionName() {
         String appVersionName = "-1";
         try {
             PackageInfo packageInfo = MyApplication.getMInstance().getPackageManager()
-                    .getPackageInfo(context.getPackageName(), 0);
+                    .getPackageInfo(MyApplication.getMInstance().getPackageName(), 0);
             appVersionName = packageInfo.versionName;
         } catch (Exception e) {
         }

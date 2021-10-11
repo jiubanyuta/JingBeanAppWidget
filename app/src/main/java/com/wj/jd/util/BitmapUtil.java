@@ -35,6 +35,4 @@ public class BitmapUtil {
         return bd.getBitmap();
 
     }
-
-
 }

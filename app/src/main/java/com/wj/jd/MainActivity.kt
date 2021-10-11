@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.google.gson.Gson
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.util.CacheUtil
+import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.UpdateDataService
@@ -34,10 +35,14 @@ class MainActivity : BaseActivity() {
                 try {
                     var gson = Gson()
                     val versionBean = gson.fromJson(result, VersionBean::class.java)
-                    if ("1".equals(versionBean.isUpdate)) {
+                    if (DeviceUtil.getAppVersionName().equals(versionBean.release)) {
                         Toast.makeText(this@MainActivity, "当前已是最新版本", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@MainActivity, "当前已是最新版本", Toast.LENGTH_SHORT).show()
+                        if ("1" == versionBean.release) {
+                            Toast.makeText(this@MainActivity, "需要强制更新", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@MainActivity, "需要普通更新", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
