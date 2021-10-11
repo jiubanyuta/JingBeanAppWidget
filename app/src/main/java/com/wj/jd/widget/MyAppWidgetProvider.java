@@ -1,4 +1,4 @@
-package com.wj.jd;
+package com.wj.jd.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import com.wj.jd.R;
 
 public class MyAppWidgetProvider extends AppWidgetProvider {
     public static final String CLICK_ACTION = "com.example.action.CLICK.JD";//自己定义的action

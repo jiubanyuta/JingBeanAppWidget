@@ -1,4 +1,4 @@
-package com.wj.jd
+package com.wj.jd.util
 
 /**
  * author wangjing

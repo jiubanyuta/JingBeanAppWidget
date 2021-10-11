@@ -6,6 +6,7 @@ import android.net.Uri
 import android.text.TextUtils
 import android.widget.Toast
 import com.wj.jd.util.CacheUtil
+import com.wj.jd.widget.UpdateDataService
 
 class MainActivity : BaseActivity() {
 

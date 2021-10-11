@@ -1,4 +1,4 @@
-package com.wj.jd;
+package com.wj.jd.widget;
 
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
+import com.wj.jd.MyApplication;
+import com.wj.jd.R;
+import com.wj.jd.util.StringCallBack;
 import com.wj.jd.bean.JingDouBean;
 import com.wj.jd.bean.RedPacket;
 import com.wj.jd.bean.UserBean;

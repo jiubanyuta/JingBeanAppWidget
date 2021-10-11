@@ -1,12 +1,9 @@
 package com.wj.jd
 
-import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
-import android.net.Uri
-import android.text.TextUtils
-import android.widget.CompoundButton
 import android.widget.Toast
 import com.wj.jd.util.CacheUtil
+import com.wj.jd.widget.UpdateDataService
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : BaseActivity() {
