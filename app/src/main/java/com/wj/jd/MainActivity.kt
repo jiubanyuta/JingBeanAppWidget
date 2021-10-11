@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.liulishuo.filedownloader.BaseDownloadTask
@@ -92,6 +93,8 @@ class MainActivity : BaseActivity() {
 
     private lateinit var pd: ProgressDialog
 
+    ///storage/emulated/0/Android/data/<包名>/files
+    ///storage/emulated/0/Android/data/com.wj.jd/files
     private fun downLoad(contentUrl: String?) {
         if (TextUtils.isEmpty(contentUrl)) return
 
@@ -100,17 +103,23 @@ class MainActivity : BaseActivity() {
         pd.setMessage("软件版本更新中，请稍后...")
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL) //设置带进度条的
 
-        pd.setMax(100)
+        pd.max = 100
         pd.setCancelable(false)
         pd.show()
 
+        Log.i("====", Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files")
+        val file = File(Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files")
+        if (!file.exists()) {
+            file.mkdirs()
+        }
+
         FileDownloader.setup(this)
         FileDownloader.getImpl().create(contentUrl)
-            .setPath(Environment.getExternalStorageDirectory().path + File.separator + "downApk" + File.separator, true)
+            .setPath(Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files/" + System.currentTimeMillis() + ".apk")
             .setListener(object : SimpleFileDownloadListener() {
                 override fun progress(task: BaseDownloadTask?, soFarBytes: Int, totalBytes: Int) {
                     val per = soFarBytes / (totalBytes / 100)
-                    pd.setProgress(per)
+                    pd.progress = per
                 }
 
                 override fun completed(task: BaseDownloadTask) {
