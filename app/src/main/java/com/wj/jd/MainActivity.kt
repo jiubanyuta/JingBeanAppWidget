@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.wj.jd.bean.VersionBean
+import com.wj.jd.dialog.NewStyleDialog
 import com.wj.jd.util.CacheUtil
 import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
@@ -39,9 +40,20 @@ class MainActivity : BaseActivity() {
                         Toast.makeText(this@MainActivity, "当前已是最新版本", Toast.LENGTH_SHORT).show()
                     } else {
                         if ("1" == versionBean.isUpdate) {
-                            Toast.makeText(this@MainActivity, "需要强制更新", Toast.LENGTH_SHORT).show()
+                            createDialog("版本更新", versionBean.content, "更新", object : NewStyleDialog.OnRightClickListener {
+                                override fun rightClick() {
+
+                                }
+                            })
                         } else {
-                            Toast.makeText(this@MainActivity, "需要普通更新", Toast.LENGTH_SHORT).show()
+                            createDialog("版本更新", versionBean.content, "取消", "更新", object :NewStyleDialog.OnLeftClickListener{
+                                override fun leftClick() {
+                                }
+                            }, object : NewStyleDialog.OnRightClickListener {
+                                override fun rightClick() {
+
+                                }
+                            })
                         }
                     }
                 } catch (e: Exception) {
