@@ -73,7 +73,8 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/updateTime"
+                android:text="点击头像刷新数据"
+                android:id="@+id/tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -81,7 +82,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp_5"
                 android:layout_marginRight="@dimen/dp_5"
-                android:textSize="@dimen/sp_8" />
+                android:textSize="@dimen/sp_6" />
 
         </RelativeLayout>
 
@@ -412,7 +413,6 @@
 
             </RelativeLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_45"
@@ -462,6 +462,17 @@
                     android:text="今日过期:--"
                     android:textSize="@dimen/sp_9" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/updateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:textSize="@dimen/sp_8" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
