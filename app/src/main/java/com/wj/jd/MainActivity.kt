@@ -80,15 +80,7 @@ class MainActivity : BaseActivity() {
 
     //context.getExternalFilesDir()
     private fun downLoadApk(contentUrl: String?) {
-        PermissionX.init(this@MainActivity)
-            .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-            .request { allGranted, grantedList, deniedList ->
-                if (allGranted) {
-                    downLoad(contentUrl)
-                } else {
-                    Toast.makeText(this, "版本更新需要同意存储权限", Toast.LENGTH_LONG).show()
-                }
-            }
+        downLoad(contentUrl)
     }
 
     private lateinit var pd: ProgressDialog
@@ -107,7 +99,7 @@ class MainActivity : BaseActivity() {
         pd.setCancelable(false)
         pd.show()
 
-        var pathParent = Environment.getExternalStorageDirectory().path + "/Android/data/" + packageName + "/files"
+        var pathParent = filesDir.path + "/downApk"
         var apkName = pathParent + System.currentTimeMillis() + ".apk"
         val file = File(pathParent)
         if (!file.exists()) {
