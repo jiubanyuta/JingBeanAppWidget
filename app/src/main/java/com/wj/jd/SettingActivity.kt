@@ -18,37 +18,8 @@ class SettingActivity : BaseActivity() {
     }
 
     override fun initData() {
-        checkAppUpdate()
-        startUpdateService()
-    }
-
-    private fun checkAppUpdate() {
-    }
-
-    private fun startUpdateService() {
-        /*
-        * app进入重新启动更新数据后台服务
-        * */
-        startService(Intent(this, UpdateDataService::class.java))
     }
 
     override fun setEvent() {
-        noCK.setOnClickListener {
-            val intent = Intent()
-            intent.action = "android.intent.action.VIEW"
-            intent.data = Uri.parse("http://a.wangjing520.cn:5701/")
-            startActivity(intent)
-        }
-
-        updateCK.setOnClickListener {
-            if (TextUtils.isEmpty(inputCK.text.toString())) {
-                Toast.makeText(this, "CK为空，添加失败", Toast.LENGTH_SHORT).show()
-            } else {
-                CacheUtil.putString("ck", inputCK.text.toString())
-                Toast.makeText(this, "CK添加成功", Toast.LENGTH_SHORT).show()
-                inputCK.setText("")
-                startService(Intent(this, UpdateDataService::class.java))
-            }
-        }
     }
 }
