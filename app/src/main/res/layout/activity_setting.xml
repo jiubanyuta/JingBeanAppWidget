@@ -23,7 +23,7 @@
             android:gravity="center_vertical"
             android:text="隐藏底部提示"
             android:textColor="@color/black"
-            android:textSize="@dimen/sp_15" />
+            android:textSize="@dimen/dp_15" />
 
         <Switch
             android:id="@+id/hideNichen"
@@ -32,7 +32,7 @@
             android:gravity="center_vertical"
             android:text="昵称显示***"
             android:textColor="@color/black"
-            android:textSize="@dimen/sp_15" />
+            android:textSize="@dimen/dp_15" />
 
         <Button
             android:id="@+id/settingFinish"
@@ -44,7 +44,7 @@
             android:background="@drawable/background_count_down_bac"
             android:text="设置完成"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/dp_16" />
 
     </LinearLayout>
 

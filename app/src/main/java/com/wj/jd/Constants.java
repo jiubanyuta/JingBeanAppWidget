@@ -6,5 +6,5 @@ package com.wj.jd;
  * Description
  */
 public class Constants {
-    public static boolean isDebug = false;
+    public static boolean isDebug = true;
 }

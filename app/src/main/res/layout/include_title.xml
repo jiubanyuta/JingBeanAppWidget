@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
-            android:textSize="@dimen/sp_17"
+            android:textSize="@dimen/dp_17"
             android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
