@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 28
 
     defaultConfig {
         applicationId "com.wj.jd"
         minSdk 21
-        targetSdk 30
-        versionCode 15
-        versionName "1.5"
+        targetSdk 28
+        versionCode 14
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
