@@ -88,6 +88,7 @@
                             android:textSize="@dimen/sp_8" />
 
                         <TextView
+                            android:id="@+id/jingXiang"
                             android:text="----"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

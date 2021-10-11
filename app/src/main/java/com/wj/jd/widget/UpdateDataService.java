@@ -195,7 +195,7 @@ public class UpdateDataService extends Service {
     }
 
     private void getUserInfo() {
-        HttpUtil.INSTANCE.getUserInfo( new StringCallBack() {
+        HttpUtil.INSTANCE.getUserInfo(new StringCallBack() {
             @Override
             public void onSuccess(@NonNull String result) {
                 try {
@@ -231,9 +231,10 @@ public class UpdateDataService extends Service {
         HttpUtil.INSTANCE.getUserInfo1(new StringCallBack() {
             @Override
             public void onSuccess(@NonNull String result) {
-                Log.i("====",result);
+                Log.i("====", result);
                 try {
                     JSONObject job = new JSONObject(result);
+                    UserBean.INSTANCE.setJxiang(job.optJSONObject("user").optString("uclass").replace("京享值", ""));
                     setData();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -270,6 +271,7 @@ public class UpdateDataService extends Service {
         remoteViews.setTextViewText(R.id.updateTime, "数据更新于:" + TimeUtil.INSTANCE.getCurrentData());
         remoteViews.setTextViewText(R.id.hongbao, UserBean.INSTANCE.getHb());
         remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean.INSTANCE.getGqhb());
+        remoteViews.setTextViewText(R.id.jingXiang, UserBean.INSTANCE.getJxiang());
 
         if (TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())) {
             Glide.with(MyApplication.mInstance)

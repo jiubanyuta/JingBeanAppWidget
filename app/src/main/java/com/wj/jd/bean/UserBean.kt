@@ -15,4 +15,5 @@ object UserBean {
 
     var hb = "--"
     var gqhb = "--"
+    var jxiang = "--"
 }
