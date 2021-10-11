@@ -1,12 +1,13 @@
 package com.wj.jd
 
+import android.Manifest
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
-import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
+import com.permissionx.guolindev.PermissionX
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.dialog.NewStyleDialog
 import com.wj.jd.util.CacheUtil
@@ -42,17 +43,18 @@ class MainActivity : BaseActivity() {
                         if ("1" == versionBean.isUpdate) {
                             createDialog("版本更新", versionBean.content, "更新", object : NewStyleDialog.OnRightClickListener {
                                 override fun rightClick() {
-
+                                    downLoadApk(versionBean.content_url)
                                 }
                             })
                         } else {
-                            createDialog("版本更新", versionBean.content, "取消", "更新", object :NewStyleDialog.OnLeftClickListener{
+                            createDialog("版本更新", versionBean.content, "取消", "更新", object : NewStyleDialog.OnLeftClickListener {
                                 override fun leftClick() {
                                     disMissDialog()
                                 }
                             }, object : NewStyleDialog.OnRightClickListener {
                                 override fun rightClick() {
-
+                                    disMissDialog()
+                                    downLoadApk(versionBean.content_url)
                                 }
                             })
                         }
@@ -66,6 +68,22 @@ class MainActivity : BaseActivity() {
             }
 
         })
+    }
+
+    private fun downLoadApk(contentUrl: String?) {
+        PermissionX.init(this@MainActivity)
+            .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+            .request { allGranted, grantedList, deniedList ->
+                if (allGranted) {
+                    downLoad(contentUrl)
+                } else {
+                    Toast.makeText(this, "版本更新需要同意存储权限", Toast.LENGTH_LONG).show()
+                }
+            }
+    }
+
+    private fun downLoad(contentUrl: String?) {
+        if (TextUtils.isEmpty(contentUrl)) return
     }
 
     private fun startUpdateService() {
