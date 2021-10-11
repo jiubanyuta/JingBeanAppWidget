@@ -73,7 +73,6 @@ public class UpdateDataService extends Service {
     }
 
     private void updata() {
-        Log.i("====", "time_updata");
         //更新的逻辑
         remoteViews = new RemoteViews(getPackageName(), R.layout.widges_layout);
         AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
@@ -141,7 +140,6 @@ public class UpdateDataService extends Service {
                     } else {
                         get1AgoBeanData();
                         setData();
-                        Log.i("====今日收益", UserBean.INSTANCE.getTodayBean() + "");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -182,7 +180,6 @@ public class UpdateDataService extends Service {
                         get1AgoBeanData();
                     } else {
                         setData();
-                        Log.i("====昨日", UserBean.INSTANCE.getAgo1Bean() + "");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -258,7 +255,6 @@ public class UpdateDataService extends Service {
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            Log.i("====", "onResourceReady");
                             remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.drawableToBitmap(resource));
 
                             AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
@@ -279,7 +275,6 @@ public class UpdateDataService extends Service {
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            Log.i("====", "onResourceReady");
                             remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.drawableToBitmap(resource));
 
                             AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());

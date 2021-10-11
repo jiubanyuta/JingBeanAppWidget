@@ -17,7 +17,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 
     private void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                  int appWidgetId) {
-        Log.i("====","updateAppWidget");
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widges_layout);
         ComponentName name = new ComponentName(context, MyAppWidgetProvider.class);
         remoteViews.setTextViewText(R.id.title, "updateAppWidget");
@@ -29,7 +28,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
      */
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        Log.i("====","onUpdate");
         for (int appwidgetId : appWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widges_layout);
 
@@ -40,7 +38,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 
             ComponentName name = new ComponentName(context, MyAppWidgetProvider.class);
             appWidgetManager.updateAppWidget(name, remoteViews);
-            Log.i("====","onUpdate");
         }
     }
 
@@ -51,9 +48,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         //这里判断是自己的action，做自己的事情
-        Log.i("====","onReceive");
         if (intent.getAction().equals(CLICK_ACTION)) {
-            Log.i("====","onReceive");
         }
     }
 
@@ -63,7 +58,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
     @Override
     public void onRestored(Context context, int[] oldWidgetIds, int[] newWidgetIds) {
         super.onRestored(context, oldWidgetIds, newWidgetIds);
-        Log.i("====","onRestored");
     }
 
     /*
@@ -72,7 +66,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         super.onDeleted(context, appWidgetIds);
-        Log.i("====","onDeleted");
     }
 
     /*
@@ -82,7 +75,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
         context.startService(new Intent(context, UpdateDataService.class));
-        Log.i("====","onEnabled");
     }
 
     /*
@@ -92,7 +84,6 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
         context.stopService(new Intent(context, UpdateDataService.class));
-        Log.i("====","onDisabled");
     }
 
     /*
@@ -101,6 +92,5 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
     @Override
     public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
-        Log.i("====","onAppWidgetOptionsChanged");
     }
 }
