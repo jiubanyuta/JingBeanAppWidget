@@ -2,8 +2,11 @@ package com.wj.jd
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Environment
 import android.text.TextUtils
@@ -25,6 +28,7 @@ import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
 
 class MainActivity : BaseActivity() {
+    private lateinit var notificationUpdateReceiver: NotificationUpdateReceiver
 
     override fun setLayoutId(): Int {
         return R.layout.activity_main
@@ -37,7 +41,16 @@ class MainActivity : BaseActivity() {
     override fun initData() {
         checkAppUpdate()
         startUpdateService()
+        initNotification()
     }
+
+    private fun initNotification() {
+        val intentFilter2 = IntentFilter()
+        intentFilter2.addAction("com.scott.sayhi")
+        notificationUpdateReceiver = NotificationUpdateReceiver()
+        registerReceiver(notificationUpdateReceiver, intentFilter2)
+    }
+
 
     private fun checkAppUpdate() {
         HttpUtil.getAppVer(object : StringCallBack {
@@ -159,6 +172,13 @@ class MainActivity : BaseActivity() {
                 inputCK.setText("")
                 startService(Intent(this, UpdateDataService::class.java))
             }
+        }
+    }
+
+    inner class NotificationUpdateReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            Log.i("====", "NotificationUpdateReceiver")
+            startService(Intent(this@MainActivity, UpdateDataService::class.java))
         }
     }
 }
