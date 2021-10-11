@@ -48,6 +48,7 @@ class MainActivity : BaseActivity() {
                         } else {
                             createDialog("版本更新", versionBean.content, "取消", "更新", object :NewStyleDialog.OnLeftClickListener{
                                 override fun leftClick() {
+                                    disMissDialog()
                                 }
                             }, object : NewStyleDialog.OnRightClickListener {
                                 override fun rightClick() {

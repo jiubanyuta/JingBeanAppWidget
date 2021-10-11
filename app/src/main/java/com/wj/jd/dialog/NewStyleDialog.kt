@@ -121,17 +121,11 @@ class NewStyleDialog : Dialog {
         window?.setLayout(context.resources.displayMetrics.widthPixels * 5 / 6, LinearLayout.LayoutParams.WRAP_CONTENT)
         textView_left.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
-                if (isShowing) {
-                    dismiss()
-                }
                 onLeftClickListener?.leftClick()
             }
         })
         textView_right.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
-                if (isShowing) {
-                    dismiss()
-                }
                 onRightClickListener?.rightClick()
                 onSureClickListener?.sureClick()
             }
