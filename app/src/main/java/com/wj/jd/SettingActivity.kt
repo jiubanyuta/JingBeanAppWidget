@@ -44,6 +44,7 @@ class SettingActivity : BaseActivity() {
 
         settingFinish.setOnClickListener {
             startService(Intent(this, UpdateDataService::class.java))
+            Toast.makeText(this, "小组件状态更新完毕", Toast.LENGTH_SHORT).show()
         }
     }
 }
