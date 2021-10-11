@@ -1,13 +1,18 @@
 package com.wj.jd
 
 import android.Manifest
+import android.app.ProgressDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.net.Uri
+import android.os.Environment
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.gson.Gson
+import com.liulishuo.filedownloader.BaseDownloadTask
+import com.liulishuo.filedownloader.FileDownloader
 import com.permissionx.guolindev.PermissionX
+import com.wj.jd.bean.SimpleFileDownloadListener
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.dialog.NewStyleDialog
 import com.wj.jd.util.CacheUtil
@@ -15,6 +20,8 @@ import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.UpdateDataService
+import com.zhy.base.fileprovider.FileProvider7
+import java.io.File
 
 class MainActivity : BaseActivity() {
 
@@ -70,6 +77,7 @@ class MainActivity : BaseActivity() {
         })
     }
 
+    //context.getExternalFilesDir()
     private fun downLoadApk(contentUrl: String?) {
         PermissionX.init(this@MainActivity)
             .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -82,8 +90,42 @@ class MainActivity : BaseActivity() {
             }
     }
 
+    private lateinit var pd: ProgressDialog
+
     private fun downLoad(contentUrl: String?) {
         if (TextUtils.isEmpty(contentUrl)) return
+
+        pd = ProgressDialog(this)
+        pd.setTitle("提示")
+        pd.setMessage("软件版本更新中，请稍后...")
+        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL) //设置带进度条的
+
+        pd.setMax(100)
+        pd.setCancelable(false)
+        pd.show()
+
+        FileDownloader.setup(this)
+        FileDownloader.getImpl().create(contentUrl)
+            .setPath(Environment.getExternalStorageDirectory().path + File.separator + "downApk" + File.separator, true)
+            .setListener(object : SimpleFileDownloadListener() {
+                override fun progress(task: BaseDownloadTask?, soFarBytes: Int, totalBytes: Int) {
+                    val per = soFarBytes / (totalBytes / 100)
+                    pd.setProgress(per)
+                }
+
+                override fun completed(task: BaseDownloadTask) {
+                    pd.dismiss()
+                    val file = File(task.path + task.filename)
+                    installApk(file)
+                }
+            }).start()
+
+    }
+
+    private fun installApk(file: File) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        FileProvider7.setIntentDataAndType(this, intent, "application/vnd.android.package-archive", file, true)
+        startActivity(intent)
     }
 
     private fun startUpdateService() {
