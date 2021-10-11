@@ -38,7 +38,7 @@ class MainActivity : BaseActivity() {
                     if (DeviceUtil.getAppVersionName().equals(versionBean.release)) {
                         Toast.makeText(this@MainActivity, "当前已是最新版本", Toast.LENGTH_SHORT).show()
                     } else {
-                        if ("1" == versionBean.release) {
+                        if ("1" == versionBean.isUpdate) {
                             Toast.makeText(this@MainActivity, "需要强制更新", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(this@MainActivity, "需要普通更新", Toast.LENGTH_SHORT).show()
