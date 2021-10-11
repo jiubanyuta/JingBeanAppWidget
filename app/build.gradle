@@ -53,4 +53,7 @@ dependencies {
     implementation 'com.lzy.net:okgo:3.0.4'
 
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    //BugLy 崩溃收集
+    implementation 'com.tencent.bugly:crashreport:3.3.92'
 }

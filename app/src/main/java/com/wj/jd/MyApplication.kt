@@ -1,6 +1,7 @@
 package com.wj.jd
 
 import android.app.Application
+import com.tencent.bugly.crashreport.CrashReport
 
 /**
  * author wangjing
@@ -16,6 +17,8 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mInstance = this
+
+        CrashReport.initCrashReport(this, "a8f5ee2093", Constants.isDebug)
     }
 
 }
