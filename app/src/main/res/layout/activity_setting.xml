@@ -34,6 +34,18 @@
             android:textColor="@color/black"
             android:textSize="@dimen/sp_15" />
 
+        <Button
+            android:id="@+id/settingFinish"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_25"
+            android:background="@drawable/background_count_down_bac"
+            android:text="设置完成"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+
     </LinearLayout>
 
 </LinearLayout>

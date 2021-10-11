@@ -41,5 +41,9 @@ class SettingActivity : BaseActivity() {
                 CacheUtil.putString("hideNichen", "0")
             }
         }
+
+        settingFinish.setOnClickListener {
+            startService(Intent(this, UpdateDataService::class.java))
+        }
     }
 }

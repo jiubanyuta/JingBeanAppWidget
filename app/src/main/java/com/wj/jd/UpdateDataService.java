@@ -227,7 +227,7 @@ public class UpdateDataService extends Service {
     }
 
     private void setData() {
-        if ("1" == CacheUtil.INSTANCE.getString("hideTips")) {
+        if ("1".equals(CacheUtil.INSTANCE.getString("hideTips"))) {
             remoteViews.setViewVisibility(R.id.updateTime, View.GONE);
             remoteViews.setViewVisibility(R.id.tips, View.GONE);
         } else {
@@ -235,7 +235,7 @@ public class UpdateDataService extends Service {
             remoteViews.setViewVisibility(R.id.tips, View.VISIBLE);
         }
 
-        if ("1" == CacheUtil.INSTANCE.getString("hideNichen")) {
+        if ("1".equals(CacheUtil.INSTANCE.getString("hideNichen"))) {
             remoteViews.setTextViewText(R.id.nickName, "***");
         } else {
             remoteViews.setTextViewText(R.id.nickName, UserBean.INSTANCE.getNickName());
