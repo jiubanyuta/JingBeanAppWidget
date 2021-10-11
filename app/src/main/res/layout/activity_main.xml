@@ -73,7 +73,7 @@
         android:layout_marginLeft="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_25"
         android:layout_marginRight="@dimen/dp_15"
-        android:text="使用说明\n在输入框中输入京东Cookie然后点击【更新CK状态】按钮，提示更新成功则CK已经缓存成功，返回到桌面，编辑桌面，添加小工具（小组件），找到【京豆】添加到桌面即可 \n\n桌面小组件数据不更新怎么办？\n由于有些手机后台限制了app活动，此时要在任务管理器锁定app保持不被杀死，可在应用授权管理开启应用后台活动。\n\n开源地址\nhttps://github.com/wangjing71/JingDouAppWidget1\n\nQ群：1018698886"
+        android:text="使用说明\n在输入框中输入京东Cookie然后点击【更新CK状态】按钮，提示更新成功则CK已经缓存成功，返回到桌面，编辑桌面，添加小工具（小组件），找到【京豆】添加到桌面即可 \n\n桌面小组件数据不更新怎么办？\n由于有些手机后台限制了app活动，此时要在任务管理器锁定app保持不被杀死，可在应用授权管理开启应用后台活动。\n\n开源地址\nhttps://github.com/wangjing71/JingBeanAppWidget\n\nQ群：1018698886"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_13" />
 
