@@ -235,7 +235,12 @@ public class UpdateDataService extends Service {
             remoteViews.setViewVisibility(R.id.tips, View.VISIBLE);
         }
 
-        remoteViews.setTextViewText(R.id.nickName, UserBean.INSTANCE.getNickName());
+        if ("1" == CacheUtil.INSTANCE.getString("hideNichen")) {
+            remoteViews.setTextViewText(R.id.nickName, "***");
+        } else {
+            remoteViews.setTextViewText(R.id.nickName, UserBean.INSTANCE.getNickName());
+        }
+
         remoteViews.setTextViewText(R.id.beanNum, UserBean.INSTANCE.getBeanNum());
         remoteViews.setTextViewText(R.id.todayBean, "+" + UserBean.INSTANCE.getTodayBean());
         remoteViews.setTextViewText(R.id.todayBeanNum, UserBean.INSTANCE.getTodayBean() + "");
