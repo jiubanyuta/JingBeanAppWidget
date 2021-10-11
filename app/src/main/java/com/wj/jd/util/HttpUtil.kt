@@ -17,7 +17,7 @@ object HttpUtil {
 
     private fun getCK(): String? {
         return if (Constants.isDebug) {
-            ""
+            "pt_key=AAJhX-DXADDNzTog6ANYUI-dGwkc1WUK1f_PhWjlHxR79Xz2BHpgcvbQIb86MCYPJaM_thWDK30;pt_pin=wj1029821170;"
         } else {
             CacheUtil.getString("ck")
         }
@@ -53,7 +53,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getUserInfo(path: String, callback: StringCallBack?) {
-        var str = CacheUtil.getString("ck")
+        var str = getCK()
         if (TextUtils.isEmpty(str)) return
         str =
             str + "User-Agent" + "=" + "jdapp;iPhone;10.0.2;14.3;network/wifi;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1;"
@@ -81,7 +81,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getJD(path: String, page: Int, callback: StringCallBack?) {
-        var str = CacheUtil.getString("ck")
+        var str = getCK()
         if (TextUtils.isEmpty(str)) return
         OkGo.post<String>(path)
             .tag("context")
@@ -109,7 +109,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getRedPack(path: String, callback: StringCallBack?) {
-        var str = CacheUtil.getString("ck")
+        var str = getCK()
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>(path)
             .tag("context")
