@@ -54,17 +54,17 @@
         android:textSize="@dimen/dp_16" />
 
     <Button
-        android:id="@+id/widgetStyle"
+        android:id="@+id/addQQGroup"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
         android:layout_marginLeft="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_25"
         android:background="@drawable/background_count_down_bac"
-        android:text="小组件样式选择"
+        android:text="点击加入QQ交流群"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_16"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="wrap_content"
