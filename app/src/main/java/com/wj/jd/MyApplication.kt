@@ -1,6 +1,7 @@
 package com.wj.jd
 
 import android.app.Application
+import com.gyf.cactus.ext.cactus
 import com.tencent.bugly.crashreport.CrashReport
 
 /**
@@ -19,6 +20,14 @@ class MyApplication : Application() {
         mInstance = this
 
         CrashReport.initCrashReport(this, "a8f5ee2093", Constants.isDebug)
+
+        cactus {
+            isDebug(false)
+            setBackgroundMusicEnabled(true)
+            addBackgroundCallback {
+
+            }
+        }
     }
 
 }
