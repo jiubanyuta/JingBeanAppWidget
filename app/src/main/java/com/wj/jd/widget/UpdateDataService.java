@@ -320,8 +320,8 @@ public class UpdateDataService extends Service {
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.drawableToBitmap(resource));
-
+                            Bitmap head =  BitmapUtil.drawableToBitmap(resource);
+                            remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head));
                             AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
                             ComponentName componentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);
                             manager.updateAppWidget(componentName, remoteViews);
