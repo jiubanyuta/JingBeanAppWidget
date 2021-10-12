@@ -43,7 +43,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-//        checkAppUpdate()
+        checkAppUpdate()
         startUpdateService()
         initNotification()
     }
