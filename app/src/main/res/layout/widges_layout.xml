@@ -29,6 +29,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:src="@mipmap/icon_head_def"
                     android:id="@+id/headImg"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"

@@ -181,7 +181,7 @@ class MainActivity : BaseActivity() {
         }
 
         addQQGroup.setOnClickListener {
-            joinQQGroup("n5xKKCpsHU-7IfmhYguyVmYXGo8t2pGy")
+            joinQQGroup("qxW1vPr7rdC3o7W4Bes1xsh94xx4QOPV")
         }
     }
 
