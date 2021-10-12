@@ -120,7 +120,7 @@ public class UpdateDataService extends Service {
         });
     }
 
-    private void getJingBeanData() {
+    private synchronized void getJingBeanData() {
         HttpUtil.INSTANCE.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, new StringCallBack() {
             @Override
             public void onSuccess(@NonNull String result) {
@@ -161,7 +161,7 @@ public class UpdateDataService extends Service {
 
     }
 
-    private void get1AgoBeanData() {
+    private synchronized void get1AgoBeanData() {
         HttpUtil.INSTANCE.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, new StringCallBack() {
             @Override
             public void onSuccess(@NonNull String result) {
