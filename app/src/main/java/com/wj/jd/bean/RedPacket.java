@@ -36,7 +36,7 @@ public class RedPacket {
     public static class Data {
         private int avaiCount;
         private String balance;
-        private String countdownTime;
+        private int countdownTime;
         private String expiredBalance;
         private int serverCurrTime;
         private UseRedInfo useRedInfo;
@@ -57,11 +57,11 @@ public class RedPacket {
             this.balance = balance;
         }
 
-        public String getCountdownTime() {
+        public int getCountdownTime() {
             return countdownTime;
         }
 
-        public void setCountdownTime(String countdownTime) {
+        public void setCountdownTime(int countdownTime) {
             this.countdownTime = countdownTime;
         }
 

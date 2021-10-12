@@ -16,4 +16,5 @@ object UserBean {
     var hb = "--"
     var gqhb = "--"
     var jxiang = "--"
+    var countdownTime = 0
 }

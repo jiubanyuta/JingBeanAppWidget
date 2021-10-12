@@ -100,7 +100,7 @@ public class UpdateDataService extends Service {
                     RedPacket redPacket = gson.fromJson(result, RedPacket.class);
                     UserBean.INSTANCE.setHb(redPacket.getData().getBalance());
                     UserBean.INSTANCE.setGqhb(redPacket.getData().getExpiredBalance());
-
+                    UserBean.INSTANCE.setCountdownTime(redPacket.getData().getCountdownTime() / 60 / 60);
                     setData();
                 } catch (Exception e) {
                     e.printStackTrace();
