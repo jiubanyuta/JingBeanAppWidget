@@ -85,11 +85,13 @@ public class UpdateDataService extends Service {
 
         getUserInfo();
         getUserInfo1();
+
         page = 1;
         UserBean.INSTANCE.setTodayBean(0);
         UserBean.INSTANCE.setAgo1Bean(0);
         todayTime = TimeUtil.INSTANCE.getTodayMillis(0);
         yesterdayTime = TimeUtil.INSTANCE.getTodayMillis(-1);
+
         getJingBeanData();
 
         getRedPackge();
@@ -259,7 +261,7 @@ public class UpdateDataService extends Service {
             remoteViews.setViewVisibility(R.id.tips, View.GONE);
         } else {
             remoteViews.setViewVisibility(R.id.updateTime, View.VISIBLE);
-            remoteViews.setViewVisibility(R.id.tips, View.VISIBLE);
+            remoteViews.setViewVisibility(R.id.tips, View.GONE);
         }
 
         if ("1".equals(CacheUtil.INSTANCE.getString("hideNichen"))) {
@@ -288,11 +290,11 @@ public class UpdateDataService extends Service {
 
         remoteViews.setTextViewText(R.id.jingXiang, UserBean.INSTANCE.getJxiang());
 
-        Intent cleatInt3 = new Intent();
-        cleatInt3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        cleatInt3.setAction("com.scott.sayhi");
-        PendingIntent clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatInt3, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3);
+//        Intent cleatInt3 = new Intent();
+//        cleatInt3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        cleatInt3.setAction("com.scott.sayhi");
+//        PendingIntent clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatInt3, PendingIntent.FLAG_UPDATE_CURRENT);
+//        remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3);
 
         if (TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())) {
             Glide.with(MyApplication.mInstance)
