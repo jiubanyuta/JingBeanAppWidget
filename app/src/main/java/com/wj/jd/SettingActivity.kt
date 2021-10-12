@@ -20,6 +20,8 @@ class SettingActivity : BaseActivity() {
         hideTips.isChecked = "1" == CacheUtil.getString("hideTips")
 
         hideNichen.isChecked = "1" == CacheUtil.getString("hideTips")
+
+        startUpdateService.isChecked = "1" != CacheUtil.getString("startUpdateService")
     }
 
     override fun setEvent() {
@@ -36,6 +38,14 @@ class SettingActivity : BaseActivity() {
                 CacheUtil.putString("hideNichen", "1")
             } else {
                 CacheUtil.putString("hideNichen", "0")
+            }
+        }
+
+        startUpdateService.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                CacheUtil.putString("startUpdateService", "0")
+            } else {
+                CacheUtil.putString("startUpdateService", "1")
             }
         }
 

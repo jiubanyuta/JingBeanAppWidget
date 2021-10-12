@@ -147,7 +147,9 @@ class MainActivity : BaseActivity() {
         /*
         * app进入重新启动更新数据后台服务
         * */
-        startService(Intent(this, UpdateDataService::class.java))
+        if("1" != CacheUtil.getString("startUpdateService")){
+            startService(Intent(this, UpdateDataService::class.java))
+        }
     }
 
     override fun setEvent() {
