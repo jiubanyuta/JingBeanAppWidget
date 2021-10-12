@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
@@ -292,8 +294,11 @@ public class UpdateDataService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3);
 
         if (TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())) {
+            RequestOptions options = new RequestOptions()
+                    .bitmapTransform(new CircleCrop());
             Glide.with(MyApplication.mInstance)
                     .load(R.mipmap.icon_head_def)
+                    .apply(options)
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
