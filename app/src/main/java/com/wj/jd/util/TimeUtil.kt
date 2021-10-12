@@ -10,6 +10,12 @@ object TimeUtil {
         return formatter.format(date)
     }
 
+    fun getCurrentHH(): Int {
+        val formatter = SimpleDateFormat("HH")
+        val date = Date(System.currentTimeMillis())
+        return formatter.format(date).toInt()
+    }
+
     fun getTodayMillis(ago: Int): Long {
         var data = Date()
         var calendar = Calendar.getInstance()

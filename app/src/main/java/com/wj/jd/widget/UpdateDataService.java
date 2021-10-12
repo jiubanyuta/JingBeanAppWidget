@@ -271,7 +271,18 @@ public class UpdateDataService extends Service {
         remoteViews.setTextViewText(R.id.oneAgoBeanNum, UserBean.INSTANCE.getAgo1Bean() + "");
         remoteViews.setTextViewText(R.id.updateTime, "数据更新于:" + TimeUtil.INSTANCE.getCurrentData());
         remoteViews.setTextViewText(R.id.hongbao, UserBean.INSTANCE.getHb());
-        remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean.INSTANCE.getGqhb());
+
+        try {
+            if (TimeUtil.INSTANCE.getCurrentHH() + UserBean.INSTANCE.getCountdownTime() > 24) {
+                remoteViews.setTextViewText(R.id.guoquHb, "明日过期:" + UserBean.INSTANCE.getGqhb());
+            } else {
+                remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean.INSTANCE.getGqhb());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean.INSTANCE.getGqhb());
+        }
+
         remoteViews.setTextViewText(R.id.jingXiang, UserBean.INSTANCE.getJxiang());
 
         Intent cleatInt3 = new Intent();
