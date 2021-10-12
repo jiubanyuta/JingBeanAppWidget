@@ -1,6 +1,5 @@
 package com.wj.jd
 
-import android.Manifest
 import android.app.ProgressDialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -8,14 +7,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
-import android.os.Environment
+import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.liulishuo.filedownloader.BaseDownloadTask
 import com.liulishuo.filedownloader.FileDownloader
-import com.permissionx.guolindev.PermissionX
 import com.wj.jd.bean.SimpleFileDownloadListener
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.dialog.NewStyleDialog
@@ -26,10 +24,6 @@ import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.UpdateDataService
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
-import android.content.ActivityNotFoundException
-
-
-
 
 class MainActivity : BaseActivity() {
     private lateinit var notificationUpdateReceiver: NotificationUpdateReceiver
@@ -151,7 +145,15 @@ class MainActivity : BaseActivity() {
         /*
         * app进入重新启动更新数据后台服务
         * */
-        if("1" != CacheUtil.getString("startUpdateService")){
+        if ("1" != CacheUtil.getString("startUpdateService")) {
+            updateService()
+        }
+    }
+
+    private fun updateService() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(Intent(this, UpdateDataService::class.java))
+        } else {
             startService(Intent(this, UpdateDataService::class.java))
         }
     }
@@ -176,7 +178,7 @@ class MainActivity : BaseActivity() {
                 CacheUtil.putString("ck", inputCK.text.toString())
                 Toast.makeText(this, "CK添加成功", Toast.LENGTH_SHORT).show()
                 inputCK.setText("")
-                startService(Intent(this, UpdateDataService::class.java))
+                updateService()
             }
         }
 
@@ -209,7 +211,7 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
-            startService(Intent(this@MainActivity, UpdateDataService::class.java))
+            updateService()
         }
     }
 }
