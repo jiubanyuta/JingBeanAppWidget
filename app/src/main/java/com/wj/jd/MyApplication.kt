@@ -1,7 +1,6 @@
 package com.wj.jd
 
 import android.app.Application
-import com.gyf.cactus.ext.cactus
 import com.tencent.bugly.crashreport.CrashReport
 
 /**
