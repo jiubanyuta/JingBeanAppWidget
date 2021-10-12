@@ -74,11 +74,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
      */
     @Override
     public void onEnabled(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(new Intent(context, UpdateDataService.class));
-        } else {
-            context.startService(new Intent(context, UpdateDataService.class));
-        }
+        context.startService(new Intent(context, UpdateDataService.class));
     }
 
     /*

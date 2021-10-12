@@ -151,11 +151,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun updateService() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(Intent(this, UpdateDataService::class.java))
-        } else {
-            startService(Intent(this, UpdateDataService::class.java))
-        }
+        startService(Intent(this, UpdateDataService::class.java))
     }
 
     override fun setEvent() {

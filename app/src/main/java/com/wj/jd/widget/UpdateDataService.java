@@ -69,7 +69,7 @@ public class UpdateDataService extends Service {
                 public void run() {
                     updata();
                 }
-            }, 0, 10 * 60 * 1000);
+            }, 0, 10 * 1000);
         } else {
             updata();
         }
