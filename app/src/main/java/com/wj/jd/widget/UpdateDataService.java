@@ -290,11 +290,11 @@ public class UpdateDataService extends Service {
 
         remoteViews.setTextViewText(R.id.jingXiang, UserBean.INSTANCE.getJxiang());
 
-//        Intent cleatInt3 = new Intent();
-//        cleatInt3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        cleatInt3.setAction("com.scott.sayhi");
-//        PendingIntent clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatInt3, PendingIntent.FLAG_UPDATE_CURRENT);
-//        remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3);
+        Intent cleatInt3 = new Intent();
+        cleatInt3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        cleatInt3.setAction("com.scott.sayhi");
+        PendingIntent clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatInt3, PendingIntent.FLAG_UPDATE_CURRENT);
+        remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3);
 
         if (TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())) {
             Glide.with(MyApplication.mInstance)
