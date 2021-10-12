@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -73,8 +74,11 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
      */
     @Override
     public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
-        context.startService(new Intent(context, UpdateDataService.class));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(new Intent(context, UpdateDataService.class));
+        } else {
+            context.startService(new Intent(context, UpdateDataService.class));
+        }
     }
 
     /*
