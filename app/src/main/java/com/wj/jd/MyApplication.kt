@@ -20,14 +20,5 @@ class MyApplication : Application() {
         mInstance = this
 
         CrashReport.initCrashReport(this, "a8f5ee2093", Constants.isDebug)
-
-        cactus {
-            isDebug(false)
-            setBackgroundMusicEnabled(true)
-            addBackgroundCallback {
-
-            }
-        }
     }
-
 }
