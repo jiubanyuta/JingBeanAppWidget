@@ -158,7 +158,6 @@ public class UpdateDataService extends Service {
 
             }
         });
-
     }
 
     private void get1AgoBeanData() {
@@ -261,7 +260,7 @@ public class UpdateDataService extends Service {
             remoteViews.setViewVisibility(R.id.tips, View.GONE);
         } else {
             remoteViews.setViewVisibility(R.id.updateTime, View.VISIBLE);
-            remoteViews.setViewVisibility(R.id.tips, View.GONE);
+            remoteViews.setViewVisibility(R.id.tips, View.VISIBLE);
         }
 
         if ("1".equals(CacheUtil.INSTANCE.getString("hideNichen"))) {
