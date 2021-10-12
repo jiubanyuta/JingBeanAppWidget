@@ -5,6 +5,7 @@ import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.IBinder;
 import android.text.TextUtils;
@@ -294,16 +295,13 @@ public class UpdateDataService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3);
 
         if (TextUtils.isEmpty(UserBean.INSTANCE.getHeadImageUrl())) {
-            RequestOptions options = new RequestOptions()
-                    .bitmapTransform(new CircleCrop());
             Glide.with(MyApplication.mInstance)
                     .load(R.mipmap.icon_head_def)
-                    .apply(options)
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.drawableToBitmap(resource));
-
+                            Bitmap head =  BitmapUtil.drawableToBitmap(resource);
+                            remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head));
                             AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
                             ComponentName componentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);
                             manager.updateAppWidget(componentName, remoteViews);
