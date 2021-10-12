@@ -84,7 +84,7 @@ public class UpdateDataService extends Service {
         manager.updateAppWidget(componentName, remoteViews);
 
         getUserInfo();
-//        getUserInfo1();
+        getUserInfo1();
 
         page = 1;
         UserBean.INSTANCE.setTodayBean(0);
@@ -92,9 +92,9 @@ public class UpdateDataService extends Service {
         todayTime = TimeUtil.INSTANCE.getTodayMillis(0);
         yesterdayTime = TimeUtil.INSTANCE.getTodayMillis(-1);
 
-//        getJingBeanData();
+        getJingBeanData();
 
-//        getRedPackge();
+        getRedPackge();
     }
 
     private void getRedPackge() {
