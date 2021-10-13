@@ -21,7 +21,6 @@ import com.wj.jd.util.CacheUtil
 import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
-import com.wj.jd.widget.UpdateDataService
 import com.wj.jd.widget.WidgetUpdateDataUtil
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
@@ -39,7 +38,6 @@ class MainActivity : BaseActivity() {
 
     override fun initData() {
         checkAppUpdate()
-        startUpdateService()
         initNotification()
     }
 
@@ -142,19 +140,6 @@ class MainActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    private fun startUpdateService() {
-        /*
-        * app进入重新启动更新数据后台服务
-        * */
-        if ("1" != CacheUtil.getString("startUpdateService")) {
-            updateService()
-        }
-    }
-
-    private fun updateService() {
-        startService(Intent(this, UpdateDataService::class.java))
-    }
-
     override fun setEvent() {
         noCK.setOnClickListener {
             val intent = Intent()
@@ -175,7 +160,7 @@ class MainActivity : BaseActivity() {
                 CacheUtil.putString("ck", inputCK.text.toString())
                 Toast.makeText(this, "CK添加成功", Toast.LENGTH_SHORT).show()
                 inputCK.setText("")
-                updateService()
+                WidgetUpdateDataUtil.updateWidget()
             }
         }
 
