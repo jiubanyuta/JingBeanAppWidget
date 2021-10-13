@@ -112,6 +112,7 @@ object WidgetUpdateDataUtil {
                         UserBean.userLevel = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("userLevel")
                         UserBean.levelName = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("levelName")
                         UserBean.headImageUrl = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("headImageUrl")
+                        UserBean.isPlusVip =  job.optJSONObject("data").optString("isPlusVip")
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -217,6 +218,9 @@ object WidgetUpdateDataUtil {
         } else {
             remoteViews!!.setTextViewText(R.id.nickName, UserBean.nickName)
         }
+
+
+
         remoteViews!!.setTextViewText(R.id.beanNum, UserBean.beanNum)
         remoteViews!!.setTextViewText(R.id.todayBean, "+" + UserBean.todayBean)
         remoteViews!!.setTextViewText(R.id.todayBeanNum, UserBean.todayBean.toString())

@@ -18,5 +18,5 @@ object UserBean {
     var jxiang = "--"
     var countdownTime = 0
 
-    var isPlus = ""
+    var isPlusVip = "0"
 }
