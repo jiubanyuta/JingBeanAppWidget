@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
             android:gravity="center_vertical"
-            android:text="每次进入App重启更新进程（推荐）"
+            android:text="每次进入App刷新数据"
             android:textColor="@color/black"
             android:textSize="@dimen/dp_15" />
 
