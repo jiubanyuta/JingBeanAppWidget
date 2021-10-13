@@ -67,7 +67,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getUserInfo1(callback: StringCallBack?) {
-        var str = getCK()
+        val str = getCK()
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>("https://wxapp.m.jd.com/kwxhome/myJd/home.json?&useGuideModule=0&bizId=&brandId=&fromType=wxapp&timestamp=" + System.currentTimeMillis())
             .tag("context")
@@ -90,7 +90,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getJD(path: String, page: Int, callback: StringCallBack?) {
-        var str = getCK()
+        val str = getCK()
         if (TextUtils.isEmpty(str)) return
         OkGo.post<String>(path)
             .tag("context")
@@ -117,7 +117,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getRedPack(path: String, callback: StringCallBack?) {
-        var str = getCK()
+        val str = getCK()
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>(path)
             .tag("context")
