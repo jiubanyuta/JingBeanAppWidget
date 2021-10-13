@@ -28,8 +28,8 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      * 每次窗口小部件被更新都调用一次该方法
      */
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        Log.i("====","onUpdate")
         for (appwidgetId in appWidgetIds) {
+            Log.i("====", "onUpdate")
             val remoteViews = RemoteViews(context.packageName, R.layout.widges_layout)
             val last_intent = Intent()
             last_intent.action = CLICK_ACTION
@@ -45,10 +45,9 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      */
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
+        Log.i("====", "onReceive:" + intent.action)
         //这里判断是自己的action，做自己的事情
         if (intent.action == CLICK_ACTION) {
-            Log.i("====","onReceive")
-
         }
     }
 
