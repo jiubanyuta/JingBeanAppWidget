@@ -69,15 +69,19 @@ public class UpdateDataService extends Service {
                 public void run() {
                     updata();
                 }
-            }, 0, 10 * 1000);
+            }, 0, 30 * 60 * 1000);
         } else {
             updata();
         }
         return super.onStartCommand(intent, flags, startId);
     }
 
+    /*
+     * 更新的逻辑
+     * */
     private void updata() {
-        //更新的逻辑
+        HttpUtil.INSTANCE.cancelAll();
+
         remoteViews = new RemoteViews(getPackageName(), R.layout.widges_layout);
         AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
         ComponentName componentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);
@@ -301,7 +305,7 @@ public class UpdateDataService extends Service {
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            Bitmap head =  BitmapUtil.drawableToBitmap(resource);
+                            Bitmap head = BitmapUtil.drawableToBitmap(resource);
                             remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head));
                             AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
                             ComponentName componentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);
@@ -321,7 +325,7 @@ public class UpdateDataService extends Service {
                     .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            Bitmap head =  BitmapUtil.drawableToBitmap(resource);
+                            Bitmap head = BitmapUtil.drawableToBitmap(resource);
                             remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head));
                             AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
                             ComponentName componentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);

@@ -144,7 +144,7 @@ object HttpUtil {
         OkGo.getInstance().cancelTag(tag)
     }
 
-    private fun cancelAll() {
+    public fun cancelAll() {
         OkGo.getInstance().cancelAll()
     }
 
