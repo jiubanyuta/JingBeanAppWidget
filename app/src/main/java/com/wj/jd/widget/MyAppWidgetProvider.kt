@@ -31,9 +31,9 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      */
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
-        Log.i("====", "onReceive:" + intent.action)
         //这里判断是自己的action，做自己的事情
         if (intent.action == ACTION_APPWIDGET_UPDATE) {
+
 
         }
     }
