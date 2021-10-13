@@ -71,7 +71,7 @@ public class UpdateDataService extends Service {
                 }
             }, 0, 30 * 60 * 1000);
         } else {
-            updata();
+//            updata();
         }
         return super.onStartCommand(intent, flags, startId);
     }
@@ -87,8 +87,6 @@ public class UpdateDataService extends Service {
         ComponentName componentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);
         manager.updateAppWidget(componentName, remoteViews);
 
-        getUserInfo();
-        getUserInfo1();
 
         page = 1;
         UserBean.INSTANCE.setTodayBean(0);
@@ -169,7 +167,6 @@ public class UpdateDataService extends Service {
             @Override
             public void onSuccess(@NonNull String result) {
                 try {
-                    //2021-10-05 10:18:37
                     JingDouBean jingDouBean = gson.fromJson(result, JingDouBean.class);
                     ArrayList<JingDouBean.DetailListDTO> dataList = jingDouBean.getDetailList();
                     boolean isFinish = true;
@@ -203,60 +200,6 @@ public class UpdateDataService extends Service {
         });
     }
 
-    private void getUserInfo() {
-        HttpUtil.INSTANCE.getUserInfo(new StringCallBack() {
-            @Override
-            public void onSuccess(@NonNull String result) {
-                try {
-                    JSONObject job = new JSONObject(result);
-                    try {
-                        UserBean.INSTANCE.setNickName(job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("nickname"));
-                        UserBean.INSTANCE.setUserLevel(job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("userLevel"));
-                        UserBean.INSTANCE.setLevelName(job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("levelName"));
-                        UserBean.INSTANCE.setHeadImageUrl(job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("headImageUrl"));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        UserBean.INSTANCE.setBeanNum(job.optJSONObject("data").optJSONObject("assetInfo").optString("beanNum"));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    setData();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFail() {
-
-            }
-        });
-    }
-
-    private void getUserInfo1() {
-        HttpUtil.INSTANCE.getUserInfo1(new StringCallBack() {
-            @Override
-            public void onSuccess(@NonNull String result) {
-                Log.i("====", result);
-                try {
-                    JSONObject job = new JSONObject(result);
-                    UserBean.INSTANCE.setJxiang(job.optJSONObject("user").optString("uclass").replace("京享值", ""));
-                    setData();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFail() {
-
-            }
-        });
-    }
 
     private void setData() {
         if ("1".equals(CacheUtil.INSTANCE.getString("hideTips"))) {
