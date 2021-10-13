@@ -1,41 +1,27 @@
-package com.wj.jd.widget;
+package com.wj.jd.widget
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
+import android.app.Service
+import android.content.Intent
+import android.os.IBinder
+import java.util.*
 
-import androidx.annotation.Nullable;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class UpdateDataService extends Service {
-    Timer timer;
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+class UpdateDataService : Service() {
+    var timer: Timer? = null
+    override fun onBind(intent: Intent): IBinder? {
+        return null
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         if (timer == null) {
-            timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
+            timer = Timer()
+            timer!!.schedule(object : TimerTask() {
+                override fun run() {
 //                    updata();
                 }
-            }, 0, 30 * 60 * 1000);
+            }, 0, (30 * 60 * 1000).toLong())
         } else {
 //            updata();
         }
-        return super.onStartCommand(intent, flags, startId);
+        return super.onStartCommand(intent, flags, startId)
     }
 }

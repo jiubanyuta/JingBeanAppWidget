@@ -23,6 +23,7 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      */
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         for (appwidgetId in appWidgetIds) {
+
         }
     }
 
@@ -34,8 +35,6 @@ class MyAppWidgetProvider : AppWidgetProvider() {
         //这里判断是自己的action，做自己的事情
         if (intent.action == ACTION_APPWIDGET_UPDATE) {
             WidgetUpdateDataUtil.updateWidget()
-
-
         }
     }
 
@@ -57,14 +56,14 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      * 当该窗口小部件第一次添加到桌面时调用该方法
      */
     override fun onEnabled(context: Context) {
-        context.startService(Intent(context, UpdateDataService::class.java))
+//        context.startService(Intent(context, UpdateDataService::class.java))
     }
 
     /*
      * 当最后一个该窗口小部件删除时调用该方法
      */
     override fun onDisabled(context: Context) {
-        context.stopService(Intent(context, UpdateDataService::class.java))
+//        context.stopService(Intent(context, UpdateDataService::class.java))
     }
 
     /*
