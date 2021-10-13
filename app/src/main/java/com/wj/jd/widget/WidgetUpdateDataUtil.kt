@@ -112,7 +112,7 @@ object WidgetUpdateDataUtil {
                         UserBean.userLevel = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("userLevel")
                         UserBean.levelName = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("levelName")
                         UserBean.headImageUrl = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("headImageUrl")
-                        UserBean.isPlusVip =  job.optJSONObject("data").optString("isPlusVip")
+                        UserBean.isPlusVip =  job.optJSONObject("data").optJSONObject("userInfo").optString("isPlusVip")
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
