@@ -34,11 +34,11 @@ import java.lang.Exception
  * Description
  */
 object WidgetUpdateDataUtil {
-    var remoteViews: RemoteViews? = null
-    var gson = Gson()
-    var page = 1
-    var todayTime: Long = 0
-    var yesterdayTime: Long = 0
+    private var remoteViews: RemoteViews? = null
+    private var gson = Gson()
+    private var page = 1
+    private var todayTime: Long = 0
+    private var yesterdayTime: Long = 0
 
     fun updateWidget() {
         HttpUtil.cancelAll()
