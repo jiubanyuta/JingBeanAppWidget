@@ -219,7 +219,11 @@ object WidgetUpdateDataUtil {
             remoteViews!!.setTextViewText(R.id.nickName, UserBean.nickName)
         }
 
-
+        if("1" == UserBean.isPlusVip){
+            remoteViews!!.setViewVisibility(R.id.plusIcon, View.VISIBLE)
+        }else{
+            remoteViews!!.setViewVisibility(R.id.plusIcon, View.GONE)
+        }
 
         remoteViews!!.setTextViewText(R.id.beanNum, UserBean.beanNum)
         remoteViews!!.setTextViewText(R.id.todayBean, "+" + UserBean.todayBean)
