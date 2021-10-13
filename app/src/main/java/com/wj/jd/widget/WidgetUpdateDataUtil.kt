@@ -97,8 +97,8 @@ object WidgetUpdateDataUtil {
             }
 
             override fun onFail() {
-            }
 
+            }
         })
     }
 
