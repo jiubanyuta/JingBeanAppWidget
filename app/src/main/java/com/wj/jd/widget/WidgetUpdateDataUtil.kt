@@ -129,7 +129,7 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    fun getJingBeanData() {
+    private fun getJingBeanData() {
         HttpUtil.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
@@ -166,7 +166,7 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    fun get1AgoBeanData() {
+    private fun get1AgoBeanData() {
         HttpUtil.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {

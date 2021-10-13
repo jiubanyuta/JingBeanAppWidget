@@ -22,6 +22,7 @@ import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.UpdateDataService
+import com.wj.jd.widget.WidgetUpdateDataUtil
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
 
@@ -208,6 +209,7 @@ class MainActivity : BaseActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
             updateService()
+            WidgetUpdateDataUtil.updateWidget()
         }
     }
 }
