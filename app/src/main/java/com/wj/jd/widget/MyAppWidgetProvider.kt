@@ -2,19 +2,10 @@ package com.wj.jd.widget
 
 import android.appwidget.AppWidgetProvider
 import android.appwidget.AppWidgetManager
-import android.widget.RemoteViews
-import com.wj.jd.R
-import android.content.ComponentName
-import com.wj.jd.widget.MyAppWidgetProvider
 import android.content.Intent
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
 import android.content.Context
-import com.wj.jd.widget.UpdateDataService
 import android.os.Bundle
-import android.util.Log
-import com.wj.jd.bean.UserBean
-import com.wj.jd.bean.UserBean.todayBean
 
 class MyAppWidgetProvider : AppWidgetProvider() {
 

@@ -1,9 +1,8 @@
 package com.wj.jd
 
-import android.content.Intent
 import android.widget.Toast
 import com.wj.jd.util.CacheUtil
-import com.wj.jd.widget.UpdateDataService
+import com.wj.jd.widget.WidgetUpdateDataUtil
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : BaseActivity() {
@@ -50,7 +49,7 @@ class SettingActivity : BaseActivity() {
         }
 
         settingFinish.setOnClickListener {
-            startService(Intent(this, UpdateDataService::class.java))
+            WidgetUpdateDataUtil.updateWidget()
             Toast.makeText(this, "小组件状态更新完毕", Toast.LENGTH_SHORT).show()
         }
     }
