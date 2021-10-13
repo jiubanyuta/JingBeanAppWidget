@@ -21,6 +21,7 @@ import com.wj.jd.util.CacheUtil
 import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
+import com.wj.jd.widget.UpdateDataService
 import com.wj.jd.widget.WidgetUpdateDataUtil
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
@@ -39,6 +40,16 @@ class MainActivity : BaseActivity() {
     override fun initData() {
         checkAppUpdate()
         initNotification()
+        startUpdateService()
+    }
+
+    private fun startUpdateService() {
+        /*
+        * app进入重新启动更新数据后台服务
+        * */
+        if ("1" != CacheUtil.getString("startUpdateService")) {
+            startService(Intent(this, UpdateDataService::class.java))
+        }
     }
 
     private fun initNotification() {
@@ -193,7 +204,7 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
-            WidgetUpdateDataUtil.updateWidget()
+            startService(Intent(this@MainActivity, UpdateDataService::class.java))
         }
     }
 }
