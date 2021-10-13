@@ -208,7 +208,6 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
-            updateService()
             WidgetUpdateDataUtil.updateWidget()
         }
     }
