@@ -37,18 +37,18 @@
                         android:id="@+id/headImg"
                         android:layout_width="@dimen/dp_45"
                         android:layout_height="@dimen/dp_45"
-                        android:layout_marginLeft="@dimen/dp_3"
+                        android:layout_marginLeft="@dimen/dp_1_5"
                         android:layout_marginTop="@dimen/dp_5"
                         android:adjustViewBounds="true"
                         android:src="@mipmap/icon_head_def" />
 
                     <ImageView
                         android:id="@+id/plusIcon"
-                        android:layout_width="@dimen/dp_54"
+                        android:layout_width="@dimen/dp_52"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
                         android:src="@mipmap/icon_plus"
-                        android:visibility="visible" />
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 
