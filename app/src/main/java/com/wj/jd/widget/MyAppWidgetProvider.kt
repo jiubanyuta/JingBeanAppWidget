@@ -14,15 +14,6 @@ import android.os.Bundle
 import android.util.Log
 
 class MyAppWidgetProvider : AppWidgetProvider() {
-    private fun updateAppWidget(
-        context: Context, appWidgetManager: AppWidgetManager,
-        appWidgetId: Int
-    ) {
-        val remoteViews = RemoteViews(context.packageName, R.layout.widges_layout)
-        val name = ComponentName(context, MyAppWidgetProvider::class.java)
-        remoteViews.setTextViewText(R.id.title, "updateAppWidget")
-        appWidgetManager.updateAppWidget(name, remoteViews)
-    }
 
     /*
      * 每次窗口小部件被更新都调用一次该方法
@@ -31,10 +22,6 @@ class MyAppWidgetProvider : AppWidgetProvider() {
         for (appwidgetId in appWidgetIds) {
             Log.i("====", "onUpdate")
             val remoteViews = RemoteViews(context.packageName, R.layout.widges_layout)
-            val last_intent = Intent()
-            last_intent.action = CLICK_ACTION
-            val last_pendingIntent = PendingIntent.getBroadcast(context, 0, last_intent, 0)
-            remoteViews.setOnClickPendingIntent(R.id.title, last_pendingIntent)
             val name = ComponentName(context, MyAppWidgetProvider::class.java)
             appWidgetManager.updateAppWidget(name, remoteViews)
         }
