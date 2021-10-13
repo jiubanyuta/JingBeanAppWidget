@@ -6,6 +6,7 @@ import android.content.ComponentName
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
 import com.bumptech.glide.Glide
@@ -135,7 +136,7 @@ object WidgetUpdateDataUtil {
         HttpUtil.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
-                    //2021-10-05 10:18:37
+                    Log.i("====",result)
                     val jingDouBean = gson.fromJson(result, JingDouBean::class.java)
                     val dataList = jingDouBean.detailList
                     var isFinish = true
