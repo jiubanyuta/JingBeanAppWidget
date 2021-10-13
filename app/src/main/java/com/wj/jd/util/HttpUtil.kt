@@ -14,7 +14,7 @@ import com.wj.jd.Constants
  */
 object HttpUtil {
 
-    private fun getCK(): String? {
+    fun getCK(): String? {
         return if (Constants.isDebug) {
             "pt_key=AAJhX-DXADDNzTog6ANYUI-dGwkc1WUK1f_PhWjlHxR79Xz2BHpgcvbQIb86MCYPJaM_thWDK30;pt_pin=wj1029821170;"
         } else {

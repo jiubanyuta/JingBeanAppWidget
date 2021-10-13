@@ -41,6 +41,8 @@ object WidgetUpdateDataUtil {
     private var yesterdayTime: Long = 0
 
     fun updateWidget() {
+        val str = HttpUtil.getCK()
+        if (TextUtils.isEmpty(str)) return
         HttpUtil.cancelAll()
 
         remoteViews = RemoteViews(MyApplication.mInstance.getPackageName(), R.layout.widges_layout)
