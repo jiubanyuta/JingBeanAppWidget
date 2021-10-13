@@ -8,10 +8,13 @@ import android.content.ComponentName
 import com.wj.jd.widget.MyAppWidgetProvider
 import android.content.Intent
 import android.app.PendingIntent
+import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
 import android.content.Context
 import com.wj.jd.widget.UpdateDataService
 import android.os.Bundle
 import android.util.Log
+import com.wj.jd.bean.UserBean
+import com.wj.jd.bean.UserBean.todayBean
 
 class MyAppWidgetProvider : AppWidgetProvider() {
 
@@ -20,10 +23,6 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      */
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         for (appwidgetId in appWidgetIds) {
-            Log.i("====", "onUpdate")
-            val remoteViews = RemoteViews(context.packageName, R.layout.widges_layout)
-            val name = ComponentName(context, MyAppWidgetProvider::class.java)
-            appWidgetManager.updateAppWidget(name, remoteViews)
         }
     }
 
@@ -34,7 +33,8 @@ class MyAppWidgetProvider : AppWidgetProvider() {
         super.onReceive(context, intent)
         Log.i("====", "onReceive:" + intent.action)
         //这里判断是自己的action，做自己的事情
-        if (intent.action == CLICK_ACTION) {
+        if (intent.action == ACTION_APPWIDGET_UPDATE) {
+
         }
     }
 
@@ -63,7 +63,6 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      * 当最后一个该窗口小部件删除时调用该方法
      */
     override fun onDisabled(context: Context) {
-        // Enter relevant functionality for when the last widget is disabled
         context.stopService(Intent(context, UpdateDataService::class.java))
     }
 
@@ -72,9 +71,5 @@ class MyAppWidgetProvider : AppWidgetProvider() {
      */
     override fun onAppWidgetOptionsChanged(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, newOptions: Bundle) {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
-    }
-
-    companion object {
-        const val CLICK_ACTION = "com.example.action.CLICK.JD" //自己定义的action
     }
 }
