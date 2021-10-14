@@ -67,6 +67,11 @@ class MainActivity : BaseActivity() {
         intentFilter1.addAction("com.scott.sayhi1")
         notificationUpdateReceiver1 = NotificationUpdateReceiver1()
         registerReceiver(notificationUpdateReceiver1, intentFilter1)
+
+        val intentFilter2 = IntentFilter()
+        intentFilter2.addAction("com.scott.sayhi2")
+        notificationUpdateReceiver2 = NotificationUpdateReceiver2()
+        registerReceiver(notificationUpdateReceiver2, intentFilter2)
     }
 
 
