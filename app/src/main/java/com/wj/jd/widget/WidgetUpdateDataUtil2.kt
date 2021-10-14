@@ -276,7 +276,7 @@ object WidgetUpdateDataUtil2 {
 
         val cleatIntent = Intent()
         cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        cleatIntent.action = "com.scott.sayhi1"
+        cleatIntent.action = "com.scott.sayhi2"
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 1, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
 

@@ -23,12 +23,15 @@ import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.WidgetUpdateDataUtil
 import com.wj.jd.widget.WidgetUpdateDataUtil1
+import com.wj.jd.widget.WidgetUpdateDataUtil2
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
 
 class MainActivity : BaseActivity() {
     private lateinit var notificationUpdateReceiver: NotificationUpdateReceiver
     private lateinit var notificationUpdateReceiver1: NotificationUpdateReceiver1
+    private lateinit var notificationUpdateReceiver2: NotificationUpdateReceiver2
+
     override fun setLayoutId(): Int {
         return R.layout.activity_main
     }
@@ -50,6 +53,7 @@ class MainActivity : BaseActivity() {
         if ("1" != CacheUtil.getString("startUpdateService")) {
             WidgetUpdateDataUtil.updateWidget("ck")
             WidgetUpdateDataUtil1.updateWidget("ck1")
+            WidgetUpdateDataUtil1.updateWidget("ck2")
         }
     }
 
@@ -218,6 +222,13 @@ class MainActivity : BaseActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver1")
             WidgetUpdateDataUtil1.updateWidget("ck1")
+        }
+    }
+
+    inner class NotificationUpdateReceiver2 : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            Log.i("====", "NotificationUpdateReceiver1")
+            WidgetUpdateDataUtil2.updateWidget("ck2")
         }
     }
 }
