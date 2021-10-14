@@ -316,7 +316,7 @@ object WidgetUpdateDataUtil1 {
 
     private fun pullWidget() {
         val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
+        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider1::class.java)
         manager.updateAppWidget(componentName, remoteViews)
     }
 }
