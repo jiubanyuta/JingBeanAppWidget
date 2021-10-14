@@ -41,12 +41,12 @@ object WidgetUpdateDataUtil {
     private var todayTime: Long = 0
     private var yesterdayTime: Long = 0
 
-    fun updateWidget() {
+    fun updateWidget(key: String) {
         val str = HttpUtil.getCK()
         if (TextUtils.isEmpty(str)) return
         HttpUtil.cancelAll()
 
-        remoteViews = RemoteViews(MyApplication.mInstance.getPackageName(), R.layout.widges_layout)
+        remoteViews = RemoteViews(MyApplication.mInstance.packageName, R.layout.widges_layout)
         val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
         val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
         manager.updateAppWidget(componentName, remoteViews)
@@ -135,7 +135,7 @@ object WidgetUpdateDataUtil {
                         UserBean.userLevel = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("userLevel")
                         UserBean.levelName = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("levelName")
                         UserBean.headImageUrl = job.optJSONObject("data").optJSONObject("userInfo").optJSONObject("baseInfo").optString("headImageUrl")
-                        UserBean.isPlusVip =  job.optJSONObject("data").optJSONObject("userInfo").optString("isPlusVip")
+                        UserBean.isPlusVip = job.optJSONObject("data").optJSONObject("userInfo").optString("isPlusVip")
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -160,7 +160,7 @@ object WidgetUpdateDataUtil {
         HttpUtil.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
-                    Log.i("====",result)
+                    Log.i("====", result)
                     val jingDouBean = gson.fromJson(result, JingDouBean::class.java)
                     val dataList = jingDouBean.detailList
                     var isFinish = true
@@ -243,15 +243,15 @@ object WidgetUpdateDataUtil {
             remoteViews!!.setTextViewText(R.id.nickName, UserBean.nickName)
         }
 
-        if("1" == UserBean.isPlusVip){
+        if ("1" == UserBean.isPlusVip) {
             remoteViews!!.setViewVisibility(R.id.plusIcon, View.VISIBLE)
-        }else{
+        } else {
             remoteViews!!.setViewVisibility(R.id.plusIcon, View.GONE)
         }
 
-        if(TextUtils.isEmpty(UserBean.updateTips)){
+        if (TextUtils.isEmpty(UserBean.updateTips)) {
             remoteViews!!.setViewVisibility(R.id.haveNewVersion, View.GONE)
-        }else{
+        } else {
             remoteViews!!.setViewVisibility(R.id.haveNewVersion, View.VISIBLE)
             remoteViews!!.setTextViewText(R.id.haveNewVersion, UserBean.updateTips)
         }
