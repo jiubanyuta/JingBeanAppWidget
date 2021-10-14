@@ -25,7 +25,8 @@
 
         <activity android:name=".SettingActivity" />
 
-        <receiver android:name=".widget.MyAppWidgetProvider">
+        <receiver android:name=".widget.MyAppWidgetProvider"
+            android:label="帐号1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -35,7 +36,8 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <receiver android:name=".widget.MyAppWidgetProvider1">
+        <receiver android:name=".widget.MyAppWidgetProvider1"
+            android:label="帐号2">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -45,7 +47,8 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <receiver android:name=".widget.MyAppWidgetProvider2">
+        <receiver android:name=".widget.MyAppWidgetProvider2"
+            android:label="帐号3">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -55,7 +58,8 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <receiver android:name=".widget.MyAppWidgetProvider3">
+        <receiver android:name=".widget.MyAppWidgetProvider3"
+            android:label="帐号4">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
