@@ -35,6 +35,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
+
         <receiver android:name=".widget.MyAppWidgetProvider1"
             android:label="帐号2">
             <intent-filter>

@@ -169,7 +169,7 @@ class MainActivity : BaseActivity() {
             if (TextUtils.isEmpty(inputCK.text.toString())) {
                 Toast.makeText(this, "CK为空，添加失败", Toast.LENGTH_SHORT).show()
             } else {
-                CacheUtil.putString("ck", inputCK.text.toString())
+                CacheUtil.putString("ck1", inputCK.text.toString())
                 Toast.makeText(this, "CK添加成功", Toast.LENGTH_SHORT).show()
                 inputCK.setText("")
                 WidgetUpdateDataUtil.updateWidget("ck")
