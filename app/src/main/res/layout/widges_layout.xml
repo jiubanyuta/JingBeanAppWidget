@@ -528,13 +528,13 @@
         </LinearLayout>
 
         <TextView
-            android:textSize="@dimen/dp_9"
-            android:text="有新版本可以更新，请打开App进行更新↑"
             android:id="@+id/haveNewVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textColor="#FF0000" />
+            android:text="有新版本可以更新，请打开App进行更新↑"
+            android:textColor="#FF0000"
+            android:textSize="@dimen/dp_9" />
 
     </LinearLayout>
 
