@@ -48,8 +48,8 @@ class MainActivity : BaseActivity() {
         * app进入重新启动更新数据后台服务
         * */
         if ("1" != CacheUtil.getString("startUpdateService")) {
-            WidgetUpdateDataUtil.updateWidget("ck")
-            WidgetUpdateDataUtil1.updateWidget("ck1")
+//            WidgetUpdateDataUtil.updateWidget("ck")
+//            WidgetUpdateDataUtil1.updateWidget("ck1")
         }
     }
 
