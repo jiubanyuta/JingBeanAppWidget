@@ -47,9 +47,7 @@ object WidgetUpdateDataUtil {
         HttpUtil.cancelAll()
 
         remoteViews = RemoteViews(MyApplication.mInstance.packageName, R.layout.widges_layout)
-        val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
-        manager.updateAppWidget(componentName, remoteViews)
+        pullWidget(key)
 
         checkUpdate()
 
@@ -97,7 +95,7 @@ object WidgetUpdateDataUtil {
                     UserBean.hb = redPacket.data.balance
                     UserBean.gqhb = redPacket.data.expiredBalance
                     UserBean.countdownTime = redPacket.data.countdownTime / 60 / 60
-                    setData()
+                    setData(key)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -114,7 +112,7 @@ object WidgetUpdateDataUtil {
                 try {
                     val job = JSONObject(result)
                     UserBean.jxiang = job.optJSONObject("user").optString("uclass").replace("京享值", "")
-                    setData()
+                    setData(key)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -145,7 +143,7 @@ object WidgetUpdateDataUtil {
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
-                    setData()
+                    setData(key)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -182,7 +180,7 @@ object WidgetUpdateDataUtil {
                         getJingBeanData(key)
                     } else {
                         get1AgoBeanData(key)
-                        setData()
+                        setData(key)
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -217,7 +215,7 @@ object WidgetUpdateDataUtil {
                         page++
                         get1AgoBeanData(key)
                     } else {
-                        setData()
+                        setData(key)
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -286,15 +284,11 @@ object WidgetUpdateDataUtil {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
                         remoteViews!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
-                        val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-                        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
-                        manager.updateAppWidget(componentName, remoteViews)
+                        pullWidget(key)
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
-                        val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-                        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
-                        manager.updateAppWidget(componentName, remoteViews)
+                        pullWidget(key)
                     }
                 })
         } else {
@@ -304,17 +298,31 @@ object WidgetUpdateDataUtil {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
                         remoteViews!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
-                        val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-                        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
-                        manager.updateAppWidget(componentName, remoteViews)
+                        pullWidget(key)
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
-                        val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-                        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
-                        manager.updateAppWidget(componentName, remoteViews)
+                        pullWidget(key)
                     }
                 })
+        }
+    }
+
+    private fun pullWidget(key: String) {
+        val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
+        when (key) {
+            "ck" -> {
+                val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
+                manager.updateAppWidget(componentName, remoteViews)
+            }
+            "ck1" -> {
+                val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider1::class.java)
+                manager.updateAppWidget(componentName, remoteViews)
+            }
+            "ck2" -> {
+                val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider2::class.java)
+                manager.updateAppWidget(componentName, remoteViews)
+            }
         }
     }
 }
