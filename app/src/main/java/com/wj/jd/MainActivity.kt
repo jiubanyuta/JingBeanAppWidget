@@ -205,7 +205,10 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
-            WidgetUpdateDataUtil.updateWidget("ck")
+            val CK = intent.getStringExtra("type")
+            if (!TextUtils.isEmpty(CK)) {
+                WidgetUpdateDataUtil.updateWidget(CK!!)
+            }
         }
     }
 }
