@@ -51,6 +51,7 @@ object WidgetUpdateDataUtil {
         val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
         manager.updateAppWidget(componentName, remoteViews)
 
+        checkUpdate()
         getUserInfo()
         getUserInfo1()
 
@@ -63,8 +64,6 @@ object WidgetUpdateDataUtil {
         getJingBeanData()
 
         getRedPackge()
-
-        checkUpdate()
     }
 
     private fun checkUpdate() {
@@ -78,7 +77,6 @@ object WidgetUpdateDataUtil {
                     } else {
                         UserBean.updateTips = versionBean.widgetTip
                     }
-                    setData()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -238,6 +236,7 @@ object WidgetUpdateDataUtil {
             remoteViews!!.setViewVisibility(R.id.updateTime, View.VISIBLE)
             remoteViews!!.setViewVisibility(R.id.tips, View.VISIBLE)
         }
+
         if ("1" == getString("hideNichen")) {
             remoteViews!!.setTextViewText(R.id.nickName, "***")
         } else {
@@ -248,6 +247,13 @@ object WidgetUpdateDataUtil {
             remoteViews!!.setViewVisibility(R.id.plusIcon, View.VISIBLE)
         }else{
             remoteViews!!.setViewVisibility(R.id.plusIcon, View.GONE)
+        }
+
+        if(TextUtils.isEmpty(UserBean.updateTips)){
+            remoteViews!!.setViewVisibility(R.id.haveNewVersion, View.GONE)
+        }else{
+            remoteViews!!.setViewVisibility(R.id.haveNewVersion, View.VISIBLE)
+            remoteViews!!.setTextViewText(R.id.haveNewVersion, UserBean.updateTips)
         }
 
         remoteViews!!.setTextViewText(R.id.beanNum, UserBean.beanNum)
