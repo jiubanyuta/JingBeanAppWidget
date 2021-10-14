@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -18,11 +19,10 @@ import com.wj.jd.R
 import com.wj.jd.bean.JingDouBean
 import com.wj.jd.bean.RedPacket
 import com.wj.jd.bean.UserBean
-import com.wj.jd.util.BitmapUtil
+import com.wj.jd.bean.VersionBean
+import com.wj.jd.dialog.NewStyleDialog
+import com.wj.jd.util.*
 import com.wj.jd.util.CacheUtil.getString
-import com.wj.jd.util.HttpUtil
-import com.wj.jd.util.StringCallBack
-import com.wj.jd.util.TimeUtil
 import com.wj.jd.util.TimeUtil.getCurrentData
 import com.wj.jd.util.TimeUtil.getCurrentHH
 import com.wj.jd.util.TimeUtil.parseTime
@@ -63,6 +63,31 @@ object WidgetUpdateDataUtil {
         getJingBeanData()
 
         getRedPackge()
+
+        checkUpdate()
+    }
+
+    private fun checkUpdate() {
+        HttpUtil.getAppVer(object : StringCallBack {
+            override fun onSuccess(result: String) {
+                try {
+                    var gson = Gson()
+                    val versionBean = gson.fromJson(result, VersionBean::class.java)
+                    if (DeviceUtil.getAppVersionName().equals(versionBean.release)) {
+                        UserBean.updateTips = ""
+                    } else {
+                        UserBean.updateTips = versionBean.widgetTip
+                    }
+                    setData()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFail() {
+            }
+
+        })
     }
 
     private fun getRedPackge() {

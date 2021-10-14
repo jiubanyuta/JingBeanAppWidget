@@ -19,4 +19,6 @@ object UserBean {
     var countdownTime = 0
 
     var isPlusVip = "0"
+
+    var updateTips = ""
 }
