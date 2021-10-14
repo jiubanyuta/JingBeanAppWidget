@@ -40,19 +40,21 @@ object WidgetUpdateDataUtil {
     private var page = 1
     private var todayTime: Long = 0
     private var yesterdayTime: Long = 0
+    lateinit var thisKey: String
 
     fun updateWidget(key: String) {
-        val str = HttpUtil.getCK(key)
+        thisKey = key
+        val str = HttpUtil.getCK(thisKey)
         if (TextUtils.isEmpty(str)) return
         HttpUtil.cancelAll()
 
         remoteViews = RemoteViews(MyApplication.mInstance.packageName, R.layout.widges_layout)
-        pullWidget(key)
+        pullWidget()
 
         checkUpdate()
 
-        getUserInfo(key)
-        getUserInfo1(key)
+        getUserInfo()
+        getUserInfo1()
 
         page = 1
         UserBean.todayBean = 0
@@ -60,9 +62,9 @@ object WidgetUpdateDataUtil {
         todayTime = TimeUtil.getTodayMillis(0)
         yesterdayTime = TimeUtil.getTodayMillis(-1)
 
-        getJingBeanData(key)
+        getJingBeanData()
 
-        getRedPackge(key)
+        getRedPackge()
     }
 
     private fun checkUpdate() {
@@ -87,15 +89,15 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getRedPackge(key: String) {
-        HttpUtil.getRedPack(key, "https://m.jingxi.com/user/info/QueryUserRedEnvelopesV2?type=1&orgFlag=JD_PinGou_New&page=1&cashRedType=1&redBalanceFlag=1&channel=1&_=" + System.currentTimeMillis() + "&sceneval=2&g_login_type=1&g_ty=ls", object : StringCallBack {
+    private fun getRedPackge() {
+        HttpUtil.getRedPack(thisKey, "https://m.jingxi.com/user/info/QueryUserRedEnvelopesV2?type=1&orgFlag=JD_PinGou_New&page=1&cashRedType=1&redBalanceFlag=1&channel=1&_=" + System.currentTimeMillis() + "&sceneval=2&g_login_type=1&g_ty=ls", object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val redPacket = gson.fromJson(result, RedPacket::class.java)
                     UserBean.hb = redPacket.data.balance
                     UserBean.gqhb = redPacket.data.expiredBalance
                     UserBean.countdownTime = redPacket.data.countdownTime / 60 / 60
-                    setData(key)
+                    setData()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -106,13 +108,13 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getUserInfo1(key: String) {
-        HttpUtil.getUserInfo1(key, object : StringCallBack {
+    private fun getUserInfo1() {
+        HttpUtil.getUserInfo1(thisKey, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val job = JSONObject(result)
                     UserBean.jxiang = job.optJSONObject("user").optString("uclass").replace("京享值", "")
-                    setData(key)
+                    setData()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -124,8 +126,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getUserInfo(key: String) {
-        HttpUtil.getUserInfo(key, object : StringCallBack {
+    private fun getUserInfo() {
+        HttpUtil.getUserInfo(thisKey, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val job = JSONObject(result)
@@ -143,7 +145,7 @@ object WidgetUpdateDataUtil {
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
-                    setData(key)
+                    setData()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -155,8 +157,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getJingBeanData(key: String) {
-        HttpUtil.getJD(key, page, object : StringCallBack {
+    private fun getJingBeanData() {
+        HttpUtil.getJD(thisKey, page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     Log.i("====", result)
@@ -177,10 +179,10 @@ object WidgetUpdateDataUtil {
                     }
                     if (isFinish) {
                         page++
-                        getJingBeanData(key)
+                        getJingBeanData()
                     } else {
-                        get1AgoBeanData(key)
-                        setData(key)
+                        get1AgoBeanData()
+                        setData()
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -192,8 +194,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun get1AgoBeanData(key: String) {
-        HttpUtil.getJD(key, page, object : StringCallBack {
+    private fun get1AgoBeanData() {
+        HttpUtil.getJD(thisKey, page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val jingDouBean = gson.fromJson(result, JingDouBean::class.java)
@@ -213,9 +215,9 @@ object WidgetUpdateDataUtil {
                     }
                     if (isFinish) {
                         page++
-                        get1AgoBeanData(key)
+                        get1AgoBeanData()
                     } else {
-                        setData(key)
+                        setData()
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -227,7 +229,7 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun setData(key: String) {
+    private fun setData() {
         if ("1" == getString("hideTips")) {
             remoteViews!!.setViewVisibility(R.id.updateTime, View.GONE)
             remoteViews!!.setViewVisibility(R.id.tips, View.GONE)
@@ -276,6 +278,7 @@ object WidgetUpdateDataUtil {
         cleatInt3.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         cleatInt3.action = "com.scott.sayhi"
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatInt3, PendingIntent.FLAG_UPDATE_CURRENT)
+
         remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
         if (TextUtils.isEmpty(UserBean.headImageUrl)) {
             Glide.with(MyApplication.mInstance)
@@ -284,11 +287,11 @@ object WidgetUpdateDataUtil {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
                         remoteViews!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
-                        pullWidget(key)
+                        pullWidget()
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
-                        pullWidget(key)
+                        pullWidget()
                     }
                 })
         } else {
@@ -298,19 +301,19 @@ object WidgetUpdateDataUtil {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
                         remoteViews!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
-                        pullWidget(key)
+                        pullWidget()
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
-                        pullWidget(key)
+                        pullWidget()
                     }
                 })
         }
     }
 
-    private fun pullWidget(key: String) {
+    private fun pullWidget() {
         val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-        when (key) {
+        when (thisKey) {
             "ck" -> {
                 val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
                 manager.updateAppWidget(componentName, remoteViews)
