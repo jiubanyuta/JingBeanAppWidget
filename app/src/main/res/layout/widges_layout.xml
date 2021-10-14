@@ -449,7 +449,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_40"
                     android:visibility="visible">
 
                     <TextView
@@ -469,7 +469,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/dp_3"
+                        android:layout_marginLeft="@dimen/dp_2"
                         android:text="通用红包"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dp_11" />
@@ -492,7 +492,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/dp_5"
-                        android:layout_marginRight="@dimen/dp_8"
+                        android:layout_marginRight="@dimen/dp_4"
                         android:text="今日过期:--"
                         android:textSize="@dimen/dp_9" />
                 </LinearLayout>
