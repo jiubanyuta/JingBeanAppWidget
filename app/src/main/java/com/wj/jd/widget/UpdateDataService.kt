@@ -13,7 +13,7 @@ class UpdateDataService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         Log.i("====","onStartCommand")
-        WidgetUpdateDataUtil.updateWidget()
+        WidgetUpdateDataUtil.updateWidget("ck")
         return super.onStartCommand(intent, flags, startId)
     }
 }
