@@ -276,33 +276,12 @@ object WidgetUpdateDataUtil1 {
         }
         remoteViews!!.setTextViewText(R.id.jingXiang, UserBean.jxiang)
 
-        when (thisKey) {
-            "ck" -> {
-                val cleatIntent = Intent()
-                cleatIntent.putExtra("type", "ck")
-                cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                cleatIntent.action = "com.scott.sayhi"
-                val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-                remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
-            }
-            "ck1" -> {
-                val cleatIntent = Intent()
-                cleatIntent.putExtra("type", "ck1")
-                cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                cleatIntent.action = "com.scott.sayhi"
-                val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-                remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
-            }
-            "ck2" -> {
-                val cleatIntent = Intent()
-                cleatIntent.putExtra("type", "ck2")
-                cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                cleatIntent.action = "com.scott.sayhi"
-                val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-                remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
-            }
-        }
-
+        val cleatIntent = Intent()
+        cleatIntent.putExtra("type", "ck1")
+        cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        cleatIntent.action = "com.scott.sayhi"
+        val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
 
         if (TextUtils.isEmpty(UserBean.headImageUrl)) {
             Glide.with(MyApplication.mInstance)

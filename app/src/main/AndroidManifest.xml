@@ -36,7 +36,7 @@
                 android:resource="@xml/widget_info" />
         </receiver>
         <receiver android:name=".widget.MyAppWidgetProvider1"
-            android:label="帐号1">
+            android:label="帐号2">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
