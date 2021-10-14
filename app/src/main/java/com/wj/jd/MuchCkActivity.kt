@@ -23,7 +23,7 @@ class MuchCkActivity : BaseActivity() {
 
     override fun initData() {
         inputCK1.setText(CacheUtil.getString("ck1"))
-        inputCK1.setText(CacheUtil.getString("ck2"))
+        inputCK2.setText(CacheUtil.getString("ck2"))
     }
 
     override fun setEvent() {
