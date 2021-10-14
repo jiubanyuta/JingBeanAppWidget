@@ -89,10 +89,10 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getJD(key: String, path: String, page: Int, callback: StringCallBack?) {
+    fun getJD(key: String, page: Int, callback: StringCallBack?) {
         val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
-        OkGo.post<String>(path)
+        OkGo.post<String>("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail")
             .tag("context")
             .params("body", "{\"pageSize\":\"20\",\"page\":\"$page\"}")
             .params("appid", "ld")

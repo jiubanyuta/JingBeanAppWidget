@@ -158,7 +158,7 @@ object WidgetUpdateDataUtil {
     }
 
     private fun getJingBeanData(key: String) {
-        HttpUtil.getJD(key, "https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
+        HttpUtil.getJD(key, page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     Log.i("====", result)
@@ -195,7 +195,7 @@ object WidgetUpdateDataUtil {
     }
 
     private fun get1AgoBeanData(key: String) {
-        HttpUtil.getJD(key, "https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
+        HttpUtil.getJD(key, page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val jingDouBean = gson.fromJson(result, JingDouBean::class.java)
@@ -229,7 +229,7 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun setData() {
+    private fun setData(key: String) {
         if ("1" == getString("hideTips")) {
             remoteViews!!.setViewVisibility(R.id.updateTime, View.GONE)
             remoteViews!!.setViewVisibility(R.id.tips, View.GONE)
