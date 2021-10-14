@@ -42,7 +42,7 @@ object WidgetUpdateDataUtil {
     private var yesterdayTime: Long = 0
 
     fun updateWidget(key: String) {
-        val str = HttpUtil.getCK()
+        val str = HttpUtil.getCK(key)
         if (TextUtils.isEmpty(str)) return
         HttpUtil.cancelAll()
 
@@ -52,8 +52,9 @@ object WidgetUpdateDataUtil {
         manager.updateAppWidget(componentName, remoteViews)
 
         checkUpdate()
-        getUserInfo()
-        getUserInfo1()
+
+        getUserInfo(key)
+        getUserInfo1(key)
 
         page = 1
         UserBean.todayBean = 0
@@ -61,9 +62,9 @@ object WidgetUpdateDataUtil {
         todayTime = TimeUtil.getTodayMillis(0)
         yesterdayTime = TimeUtil.getTodayMillis(-1)
 
-        getJingBeanData()
+        getJingBeanData(key)
 
-        getRedPackge()
+        getRedPackge(key)
     }
 
     private fun checkUpdate() {
@@ -88,8 +89,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getRedPackge() {
-        HttpUtil.getRedPack("https://m.jingxi.com/user/info/QueryUserRedEnvelopesV2?type=1&orgFlag=JD_PinGou_New&page=1&cashRedType=1&redBalanceFlag=1&channel=1&_=" + System.currentTimeMillis() + "&sceneval=2&g_login_type=1&g_ty=ls", object : StringCallBack {
+    private fun getRedPackge(key: String) {
+        HttpUtil.getRedPack(key, "https://m.jingxi.com/user/info/QueryUserRedEnvelopesV2?type=1&orgFlag=JD_PinGou_New&page=1&cashRedType=1&redBalanceFlag=1&channel=1&_=" + System.currentTimeMillis() + "&sceneval=2&g_login_type=1&g_ty=ls", object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val redPacket = gson.fromJson(result, RedPacket::class.java)
@@ -107,8 +108,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getUserInfo1() {
-        HttpUtil.getUserInfo1(object : StringCallBack {
+    private fun getUserInfo1(key: String) {
+        HttpUtil.getUserInfo1(key, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val job = JSONObject(result)
@@ -125,8 +126,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getUserInfo() {
-        HttpUtil.getUserInfo(object : StringCallBack {
+    private fun getUserInfo(key: String) {
+        HttpUtil.getUserInfo(key, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val job = JSONObject(result)
@@ -156,8 +157,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun getJingBeanData() {
-        HttpUtil.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
+    private fun getJingBeanData(key: String) {
+        HttpUtil.getJD(key, "https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     Log.i("====", result)
@@ -178,9 +179,9 @@ object WidgetUpdateDataUtil {
                     }
                     if (isFinish) {
                         page++
-                        getJingBeanData()
+                        getJingBeanData(key)
                     } else {
-                        get1AgoBeanData()
+                        get1AgoBeanData(key)
                         setData()
                     }
                 } catch (e: Exception) {
@@ -193,8 +194,8 @@ object WidgetUpdateDataUtil {
         })
     }
 
-    private fun get1AgoBeanData() {
-        HttpUtil.getJD("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
+    private fun get1AgoBeanData(key: String) {
+        HttpUtil.getJD(key, "https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail", page, object : StringCallBack {
             override fun onSuccess(result: String) {
                 try {
                     val jingDouBean = gson.fromJson(result, JingDouBean::class.java)
@@ -214,7 +215,7 @@ object WidgetUpdateDataUtil {
                     }
                     if (isFinish) {
                         page++
-                        get1AgoBeanData()
+                        get1AgoBeanData(key)
                     } else {
                         setData()
                     }

@@ -39,8 +39,8 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getUserInfo(callback: StringCallBack?) {
-        var str = getCK()
+    fun getUserInfo(key: String, callback: StringCallBack?) {
+        var str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         str =
             str + "User-Agent" + "=" + "jdapp;iPhone;10.0.2;14.3;network/wifi;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1;"
@@ -66,8 +66,8 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getUserInfo1(callback: StringCallBack?) {
-        val str = getCK()
+    fun getUserInfo1(key: String, callback: StringCallBack?) {
+        val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>("https://wxapp.m.jd.com/kwxhome/myJd/home.json?&useGuideModule=0&bizId=&brandId=&fromType=wxapp&timestamp=" + System.currentTimeMillis())
             .tag("context")
@@ -89,8 +89,8 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getJD(path: String, page: Int, callback: StringCallBack?) {
-        val str = getCK()
+    fun getJD(key: String, path: String, page: Int, callback: StringCallBack?) {
+        val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         OkGo.post<String>(path)
             .tag("context")
@@ -116,8 +116,8 @@ object HttpUtil {
     }
 
     @JvmOverloads
-    fun getRedPack(path: String, callback: StringCallBack?) {
-        val str = getCK()
+    fun getRedPack(key: String, path: String, callback: StringCallBack?) {
+        val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>(path)
             .tag("context")
