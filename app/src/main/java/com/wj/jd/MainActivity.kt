@@ -28,7 +28,7 @@ import java.io.File
 
 class MainActivity : BaseActivity() {
     private lateinit var notificationUpdateReceiver: NotificationUpdateReceiver
-
+    private lateinit var notificationUpdateReceiver1: NotificationUpdateReceiver1
     override fun setLayoutId(): Int {
         return R.layout.activity_main
     }
@@ -54,10 +54,15 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initNotification() {
-        val intentFilter2 = IntentFilter()
-        intentFilter2.addAction("com.scott.sayhi")
+        val intentFilter = IntentFilter()
+        intentFilter.addAction("com.scott.sayhi")
         notificationUpdateReceiver = NotificationUpdateReceiver()
-        registerReceiver(notificationUpdateReceiver, intentFilter2)
+        registerReceiver(notificationUpdateReceiver, intentFilter)
+
+        val intentFilter1 = IntentFilter()
+        intentFilter1.addAction("com.scott.sayhi1")
+        notificationUpdateReceiver1 = NotificationUpdateReceiver1()
+        registerReceiver(notificationUpdateReceiver1, intentFilter1)
     }
 
 
@@ -205,15 +210,14 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
-            val CK = intent.getStringExtra("type")
-            Log.i("====CK", CK.toString())
-            if (!TextUtils.isEmpty(CK)) {
-                if("ck" == CK){
-                    WidgetUpdateDataUtil.updateWidget(CK)
-                }else if("ck1" == CK){
-                    WidgetUpdateDataUtil1.updateWidget(CK)
-                }
-            }
+            WidgetUpdateDataUtil1.updateWidget("ck")
+        }
+    }
+
+    inner class NotificationUpdateReceiver1 : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            Log.i("====", "NotificationUpdateReceiver1")
+            WidgetUpdateDataUtil1.updateWidget("ck1")
         }
     }
 }
