@@ -64,7 +64,7 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_25"
                 android:background="@drawable/background_count_down_bac"
-                android:text="更新CK2状态"
+                android:text="更新CK3状态"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dp_16" />
         </LinearLayout>
