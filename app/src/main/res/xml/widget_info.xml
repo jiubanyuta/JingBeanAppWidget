@@ -3,7 +3,7 @@
     android:initialLayout="@layout/widges_layout"
     android:minWidth="@dimen/dp_400"
     android:minHeight="@dimen/dp_120"
-    android:previewImage="@mipmap/icon_plus"
+    android:previewImage="@mipmap/widget_proview"
     android:resizeMode="vertical"
     android:updatePeriodMillis="1800000"
-    android:widgetCategory="home_screen"/>
+    android:widgetCategory="home_screen" />
