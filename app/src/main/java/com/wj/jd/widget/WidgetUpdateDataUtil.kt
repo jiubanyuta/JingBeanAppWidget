@@ -42,6 +42,7 @@ object WidgetUpdateDataUtil {
     private var yesterdayTime: Long = 0
     lateinit var thisKey: String
 
+    @Synchronized
     fun updateWidget(key: String) {
         thisKey = key
         val str = HttpUtil.getCK(thisKey)
@@ -278,7 +279,7 @@ object WidgetUpdateDataUtil {
         when (thisKey) {
             "ck" -> {
                 val cleatIntent = Intent()
-                cleatIntent.putExtra("type","ck")
+                cleatIntent.putExtra("type", "ck")
                 cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 cleatIntent.action = "com.scott.sayhi"
                 val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -286,7 +287,7 @@ object WidgetUpdateDataUtil {
             }
             "ck1" -> {
                 val cleatIntent = Intent()
-                cleatIntent.putExtra("type","ck1")
+                cleatIntent.putExtra("type", "ck1")
                 cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 cleatIntent.action = "com.scott.sayhi"
                 val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -294,7 +295,7 @@ object WidgetUpdateDataUtil {
             }
             "ck2" -> {
                 val cleatIntent = Intent()
-                cleatIntent.putExtra("type","ck2")
+                cleatIntent.putExtra("type", "ck2")
                 cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 cleatIntent.action = "com.scott.sayhi"
                 val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)

@@ -13,9 +13,9 @@ class UpdateDataService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         Log.i("====","onStartCommand")
-        WidgetUpdateDataUtil.updateWidget("ck")
-        WidgetUpdateDataUtil.updateWidget("ck1")
-        WidgetUpdateDataUtil.updateWidget("ck2")
+//        WidgetUpdateDataUtil.updateWidget("ck")
+//        WidgetUpdateDataUtil.updateWidget("ck1")
+//        WidgetUpdateDataUtil.updateWidget("ck2")
         return super.onStartCommand(intent, flags, startId)
     }
 }
