@@ -49,8 +49,7 @@ class MainActivity : BaseActivity() {
         * */
         if ("1" != CacheUtil.getString("startUpdateService")) {
             WidgetUpdateDataUtil.updateWidget("ck")
-            WidgetUpdateDataUtil.updateWidget("ck1")
-            WidgetUpdateDataUtil.updateWidget("ck2")
+            WidgetUpdateDataUtil1.updateWidget("ck1")
         }
     }
 
