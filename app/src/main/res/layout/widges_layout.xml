@@ -388,7 +388,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_50"
+                    android:layout_height="match_parent"
                     android:layout_centerVertical="true">
 
                     <LinearLayout
@@ -463,7 +463,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_45"
+                android:layout_height="@dimen/dp_40"
                 android:visibility="visible">
 
                 <TextView
