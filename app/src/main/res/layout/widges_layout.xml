@@ -481,6 +481,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/dp_2"
                         android:layout_weight="1"
+                        android:maxLines="1"
+                        android:singleLine="true"
                         android:text="-- "
                         android:textColor="#FF0000"
                         android:textSize="@dimen/dp_11"
