@@ -210,7 +210,7 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
-            WidgetUpdateDataUtil1.updateWidget("ck")
+            WidgetUpdateDataUtil.updateWidget("ck")
         }
     }
 

@@ -278,7 +278,7 @@ object WidgetUpdateDataUtil1 {
         cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         cleatIntent.action = "com.scott.sayhi1"
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 1, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-        remoteViews1!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
+        remoteViews1!!.setOnClickPendingIntent(R.id.headImg1, clearIntent3)
 
         if (TextUtils.isEmpty(UserBean1.headImageUrl)) {
             Glide.with(MyApplication.mInstance)
@@ -286,7 +286,7 @@ object WidgetUpdateDataUtil1 {
                 .into(object : SimpleTarget<Drawable?>() {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
-                        remoteViews1!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
+                        remoteViews1!!.setImageViewBitmap(R.id.headImg1, BitmapUtil.createCircleBitmap(head))
                         pullWidget()
                     }
 
@@ -300,7 +300,7 @@ object WidgetUpdateDataUtil1 {
                 .into(object : SimpleTarget<Drawable?>() {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
-                        remoteViews1!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
+                        remoteViews1!!.setImageViewBitmap(R.id.headImg1, BitmapUtil.createCircleBitmap(head))
                         pullWidget()
                     }
 
