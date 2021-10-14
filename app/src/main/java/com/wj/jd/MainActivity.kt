@@ -48,8 +48,8 @@ class MainActivity : BaseActivity() {
         * app进入重新启动更新数据后台服务
         * */
         if ("1" != CacheUtil.getString("startUpdateService")) {
-//            WidgetUpdateDataUtil.updateWidget("ck")
-//            WidgetUpdateDataUtil1.updateWidget("ck1")
+            WidgetUpdateDataUtil.updateWidget("ck")
+            WidgetUpdateDataUtil1.updateWidget("ck1")
         }
     }
 
@@ -169,7 +169,7 @@ class MainActivity : BaseActivity() {
             if (TextUtils.isEmpty(inputCK.text.toString())) {
                 Toast.makeText(this, "CK为空，添加失败", Toast.LENGTH_SHORT).show()
             } else {
-                CacheUtil.putString("ck1", inputCK.text.toString())
+                CacheUtil.putString("ck", inputCK.text.toString())
                 Toast.makeText(this, "CK添加成功", Toast.LENGTH_SHORT).show()
                 inputCK.setText("")
                 WidgetUpdateDataUtil.updateWidget("ck")
@@ -206,6 +206,7 @@ class MainActivity : BaseActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver")
             val CK = intent.getStringExtra("type")
+            Log.i("====CK", CK.toString())
             if (!TextUtils.isEmpty(CK)) {
                 if("ck" == CK){
                     WidgetUpdateDataUtil.updateWidget(CK)

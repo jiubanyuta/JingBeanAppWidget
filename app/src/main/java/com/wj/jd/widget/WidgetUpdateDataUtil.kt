@@ -283,7 +283,6 @@ object WidgetUpdateDataUtil {
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
 
-
         if (TextUtils.isEmpty(UserBean.headImageUrl)) {
             Glide.with(MyApplication.mInstance)
                 .load(R.mipmap.icon_head_def)
