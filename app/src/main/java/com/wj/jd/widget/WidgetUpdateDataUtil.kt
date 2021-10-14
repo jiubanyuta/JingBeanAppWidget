@@ -337,19 +337,7 @@ object WidgetUpdateDataUtil {
 
     private fun pullWidget() {
         val manager = AppWidgetManager.getInstance(MyApplication.mInstance)
-        when (thisKey) {
-            "ck" -> {
-                val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
-                manager.updateAppWidget(componentName, remoteViews)
-            }
-            "ck1" -> {
-                val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider1::class.java)
-                manager.updateAppWidget(componentName, remoteViews)
-            }
-            "ck2" -> {
-                val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider2::class.java)
-                manager.updateAppWidget(componentName, remoteViews)
-            }
-        }
+        val componentName = ComponentName(MyApplication.mInstance, MyAppWidgetProvider::class.java)
+        manager.updateAppWidget(componentName, remoteViews)
     }
 }
