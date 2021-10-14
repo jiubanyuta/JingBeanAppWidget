@@ -534,7 +534,8 @@
             android:layout_gravity="center_horizontal"
             android:text="有新版本可以更新，请打开App进行更新↑"
             android:textColor="#FF0000"
-            android:textSize="@dimen/dp_9" />
+            android:textSize="@dimen/dp_9"
+            android:visibility="gone" />
 
     </LinearLayout>
 
