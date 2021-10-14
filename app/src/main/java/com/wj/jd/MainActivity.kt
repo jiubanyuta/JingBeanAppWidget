@@ -22,6 +22,7 @@ import com.wj.jd.util.DeviceUtil
 import com.wj.jd.util.HttpUtil
 import com.wj.jd.util.StringCallBack
 import com.wj.jd.widget.WidgetUpdateDataUtil
+import com.wj.jd.widget.WidgetUpdateDataUtil1
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
 
@@ -207,7 +208,11 @@ class MainActivity : BaseActivity() {
             Log.i("====", "NotificationUpdateReceiver")
             val CK = intent.getStringExtra("type")
             if (!TextUtils.isEmpty(CK)) {
-                WidgetUpdateDataUtil.updateWidget(CK!!)
+                if("ck" == CK){
+                    WidgetUpdateDataUtil.updateWidget(CK)
+                }else if("ck1" == CK){
+                    WidgetUpdateDataUtil1.updateWidget(CK)
+                }
             }
         }
     }
