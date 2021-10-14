@@ -74,7 +74,7 @@
                             android:paddingRight="@dimen/dp_4"
                             android:text="昵称"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/sp_8" />
+                            android:textSize="@dimen/dp_8" />
 
                         <TextView
                             android:id="@+id/nickName"
@@ -84,7 +84,7 @@
                             android:layout_marginLeft="@dimen/dp_3"
                             android:text="XXXX"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/sp_10" />
+                            android:textSize="@dimen/dp_10" />
                     </LinearLayout>
 
                     <LinearLayout
