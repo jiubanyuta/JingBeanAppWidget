@@ -13,7 +13,7 @@
         android:id="@+id/inputCK"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_100"
-        android:hint="请输入京东CK(只能更新帐号1数据)" />
+        android:hint="请输入京东CK(只能更新帐号1数据，多账号请点击【多账号设置】)" />
 
     <Button
         android:id="@+id/updateCK"
