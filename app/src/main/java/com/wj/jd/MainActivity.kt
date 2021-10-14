@@ -179,6 +179,11 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        muchCK.setOnClickListener {
+            val intent = Intent(this, MuchCkActivity::class.java)
+            startActivity(intent)
+        }
+
         updateCK.setOnClickListener {
             if (TextUtils.isEmpty(inputCK.text.toString())) {
                 Toast.makeText(this, "CK为空，添加失败", Toast.LENGTH_SHORT).show()

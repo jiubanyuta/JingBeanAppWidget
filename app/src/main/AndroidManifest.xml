@@ -25,7 +25,10 @@
 
         <activity android:name=".SettingActivity" />
 
-        <receiver android:name=".widget.MyAppWidgetProvider"
+        <activity android:name=".MuchCkActivity" />
+
+        <receiver
+            android:name=".widget.MyAppWidgetProvider"
             android:label="帐号1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -36,7 +39,8 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <receiver android:name=".widget.MyAppWidgetProvider1"
+        <receiver
+            android:name=".widget.MyAppWidgetProvider1"
             android:label="帐号2">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -47,7 +51,8 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <receiver android:name=".widget.MyAppWidgetProvider2"
+        <receiver
+            android:name=".widget.MyAppWidgetProvider2"
             android:label="帐号3">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -58,7 +63,7 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-<!--        <service android:name=".widget.UpdateDataService" />-->
+        <!--        <service android:name=".widget.UpdateDataService" />-->
     </application>
 
 </manifest>
