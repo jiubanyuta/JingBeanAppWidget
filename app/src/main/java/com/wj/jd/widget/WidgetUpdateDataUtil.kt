@@ -277,7 +277,6 @@ object WidgetUpdateDataUtil {
         remoteViews!!.setTextViewText(R.id.jingXiang, UserBean.jxiang)
 
         val cleatIntent = Intent()
-        cleatIntent.putExtra("type", "ck")
         cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         cleatIntent.action = "com.scott.sayhi"
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
