@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.gson.Gson
+import com.wj.jd.MainActivity
 import com.wj.jd.MyApplication
 import com.wj.jd.R
 import com.wj.jd.bean.JingDouBean
@@ -268,6 +269,11 @@ object WidgetUpdateDataUtil1 {
         }else if ("padding20" == paddingType) {
             remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_20.dmToPx(), 0, R.dimen.dp_20.dmToPx(), 0)
         }
+
+        val cleatInt2 = Intent(MyApplication.mInstance, MainActivity::class.java)
+        cleatInt2.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        val clearIntent2 = PendingIntent.getActivity(MyApplication.mInstance, 3, cleatInt2, PendingIntent.FLAG_UPDATE_CURRENT)
+        remoteViews.setOnClickPendingIntent(R.id.rightContent, clearIntent2)
 
         remoteViews.setTextViewText(R.id.beanNum, UserBean1.beanNum)
         remoteViews.setTextViewText(R.id.todayBean, "+" + UserBean1.todayBean)
