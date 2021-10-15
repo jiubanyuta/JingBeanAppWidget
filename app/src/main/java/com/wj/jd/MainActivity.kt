@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.liulishuo.filedownloader.BaseDownloadTask
@@ -38,6 +39,7 @@ class MainActivity : BaseActivity() {
 
     override fun initView() {
         setTitle("京豆")
+        back?.visibility = View.GONE
     }
 
     override fun initData() {

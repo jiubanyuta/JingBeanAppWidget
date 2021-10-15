@@ -2,6 +2,7 @@ package com.wj.jd
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
@@ -14,12 +15,14 @@ import com.wj.jd.dialog.NewStyleDialog
 abstract class BaseActivity : AppCompatActivity() {
     private var barView: View? = null
     private var titleTv: TextView? = null
+    public var back: LinearLayout? = null
     private lateinit var currentActivity: FragmentActivity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(setLayoutId())
         barView = findViewById(R.id.barView)
         titleTv = findViewById(R.id.title)
+        back = findViewById(R.id.back)
         currentActivity = this
         immersionBar {
             statusBarView(barView)
@@ -27,6 +30,10 @@ abstract class BaseActivity : AppCompatActivity() {
             navigationBarAlpha(1.0f)
             navigationBarDarkIcon(true)
             init()
+        }
+
+        back?.setOnClickListener {
+            finish()
         }
 
         initView()
