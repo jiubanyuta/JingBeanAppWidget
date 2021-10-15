@@ -20,7 +20,6 @@ import com.wj.jd.bean.RedPacket
 import com.wj.jd.bean.UserBean2
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.util.*
-import com.wj.jd.util.CacheUtil.getString
 import com.wj.jd.util.TimeUtil.getCurrentData
 import com.wj.jd.util.TimeUtil.getCurrentHH
 import com.wj.jd.util.TimeUtil.parseTime
@@ -229,7 +228,7 @@ object WidgetUpdateDataUtil2 {
     }
 
     private fun setData() {
-        if ("1" == getString("hideTips")) {
+        if ("1" == CacheUtil.getString("hideTips")) {
             remoteViews.setViewVisibility(R.id.updateTime, View.GONE)
             remoteViews.setViewVisibility(R.id.tips, View.GONE)
         } else {
@@ -237,7 +236,7 @@ object WidgetUpdateDataUtil2 {
             remoteViews.setViewVisibility(R.id.tips, View.VISIBLE)
         }
 
-        if ("1" == getString("hideNichen")) {
+        if ("1" == CacheUtil.getString("hideNichen")) {
             remoteViews.setTextViewText(R.id.nickName, "***")
         } else {
             remoteViews.setTextViewText(R.id.nickName, UserBean2.nickName)
@@ -254,6 +253,17 @@ object WidgetUpdateDataUtil2 {
         } else {
             remoteViews.setViewVisibility(R.id.haveNewVersion, View.VISIBLE)
             remoteViews.setTextViewText(R.id.haveNewVersion, UserBean2.updateTips)
+        }
+
+        var paddingType = CacheUtil.getString("paddingType")
+        if (TextUtils.isEmpty(paddingType) || "padding15" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_15.dmToPx(), 0, R.dimen.dp_15.dmToPx(), 0)
+        } else if ("padding0" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, 0, 0, 0, 0)
+        } else if ("padding5" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_5.dmToPx(), 0, R.dimen.dp_5.dmToPx(), 0)
+        } else if ("padding20" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_20.dmToPx(), 0, R.dimen.dp_20.dmToPx(), 0)
         }
 
         remoteViews.setTextViewText(R.id.beanNum, UserBean2.beanNum)

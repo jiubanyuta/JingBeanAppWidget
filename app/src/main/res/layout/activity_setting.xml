@@ -139,7 +139,6 @@
                 android:textSize="@dimen/dp_12" />
         </LinearLayout>
 
-
         <Button
             android:id="@+id/settingFinish"
             android:layout_width="match_parent"
