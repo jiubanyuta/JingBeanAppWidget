@@ -22,7 +22,7 @@ class MyWebActivity : BaseActivity() {
     }
 
     override fun initData() {
-//        removeCookie(this)
+        removeCookie(this)
         mCommonWebView.loadUrl("https://plogin.m.jd.com/login/login")
     }
 
@@ -65,7 +65,7 @@ class MyWebActivity : BaseActivity() {
             val primaryClip = ClipData.newPlainText("text", content)
             myClipboard.setPrimaryClip(primaryClip)
             Toast.makeText(MyApplication.mInstance, "已复制CK到粘贴板", Toast.LENGTH_SHORT).show()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
