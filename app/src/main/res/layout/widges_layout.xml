@@ -494,9 +494,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/dp_5"
-                        android:layout_marginRight="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_5"
                         android:text="今日过期:--"
-                        android:textSize="@dimen/dp_9" />
+                        android:textSize="@dimen/dp_7" />
                 </LinearLayout>
 
             </LinearLayout>
