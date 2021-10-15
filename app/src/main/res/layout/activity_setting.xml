@@ -73,6 +73,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/pading0"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
                 android:layout_gravity="center_vertical"
@@ -85,6 +86,7 @@
                 android:textSize="@dimen/dp_12" />
 
             <Button
+                android:id="@+id/pading5"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
                 android:layout_gravity="center_vertical"
@@ -97,6 +99,7 @@
                 android:textSize="@dimen/dp_12" />
 
             <Button
+                android:id="@+id/pading10"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
                 android:layout_gravity="center_vertical"
@@ -109,6 +112,7 @@
                 android:textSize="@dimen/dp_12" />
 
             <Button
+                android:id="@+id/pading15"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
                 android:layout_gravity="center_vertical"
@@ -121,6 +125,7 @@
                 android:textSize="@dimen/dp_12" />
 
             <Button
+                android:id="@+id/pading20"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
                 android:layout_gravity="center_vertical"
