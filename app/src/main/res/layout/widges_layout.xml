@@ -155,6 +155,13 @@
                         android:layout_height="@dimen/dp_20"
                         android:layout_weight="1" />
 
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                    </RelativeLayout>
+
                     <TextView
                         android:id="@+id/beanNum"
                         android:layout_width="wrap_content"
@@ -470,7 +477,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/dp_2"
-                        android:text="通用红包"
+                        android:text="总"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dp_11" />
 
