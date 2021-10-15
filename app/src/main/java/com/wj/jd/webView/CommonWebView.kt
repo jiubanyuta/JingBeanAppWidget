@@ -104,7 +104,7 @@ class CommonWebView : RelativeLayout {
                     webProgress.show()
                     return false
                 } else {
-                    openApp(context, request.url)
+//                    openApp(context, request.url)
                     return true
                 }
 
@@ -114,7 +114,9 @@ class CommonWebView : RelativeLayout {
             override fun onPageFinished(view: WebView?, url: String?) {
                 val cookieManager = CookieManager.getInstance()
                 val CookieStr = cookieManager.getCookie(url)
-                Toast.makeText(MyApplication.mInstance, CookieStr, Toast.LENGTH_SHORT).show()
+                if(CookieStr.contains("pt_key")&&CookieStr.contains("pt_pin")){
+                    Toast.makeText(MyApplication.mInstance, CookieStr, Toast.LENGTH_SHORT).show()
+                }
 
                 super.onPageFinished(view, url)
                 Log.i("CommonWebView", "onPageFinished")

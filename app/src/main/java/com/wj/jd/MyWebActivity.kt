@@ -13,7 +13,7 @@ class MyWebActivity : BaseActivity() {
     }
 
     override fun initData() {
-        mCommonWebView.loadUrl("https://www.baidu.com")
+        mCommonWebView.loadUrl("https://m.jd.com")
     }
 
     override fun setEvent() {
