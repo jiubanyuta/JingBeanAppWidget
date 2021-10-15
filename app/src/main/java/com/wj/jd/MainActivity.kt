@@ -27,6 +27,8 @@ import com.wj.jd.widget.WidgetUpdateDataUtil1
 import com.wj.jd.widget.WidgetUpdateDataUtil2
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class MainActivity : BaseActivity() {
     private lateinit var notificationUpdateReceiver: NotificationUpdateReceiver
