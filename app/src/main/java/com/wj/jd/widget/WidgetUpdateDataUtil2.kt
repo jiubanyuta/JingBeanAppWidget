@@ -33,7 +33,7 @@ import java.lang.Exception
  * Description
  */
 object WidgetUpdateDataUtil2 {
-    private var remoteViews: RemoteViews? = null
+    private lateinit var remoteViews: RemoteViews
     private var gson = Gson()
     private var page = 1
     private var todayTime: Long = 0
@@ -230,55 +230,55 @@ object WidgetUpdateDataUtil2 {
 
     private fun setData() {
         if ("1" == getString("hideTips")) {
-            remoteViews!!.setViewVisibility(R.id.updateTime, View.GONE)
-            remoteViews!!.setViewVisibility(R.id.tips, View.GONE)
+            remoteViews.setViewVisibility(R.id.updateTime, View.GONE)
+            remoteViews.setViewVisibility(R.id.tips, View.GONE)
         } else {
-            remoteViews!!.setViewVisibility(R.id.updateTime, View.VISIBLE)
-            remoteViews!!.setViewVisibility(R.id.tips, View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.updateTime, View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.tips, View.VISIBLE)
         }
 
         if ("1" == getString("hideNichen")) {
-            remoteViews!!.setTextViewText(R.id.nickName, "***")
+            remoteViews.setTextViewText(R.id.nickName, "***")
         } else {
-            remoteViews!!.setTextViewText(R.id.nickName, UserBean2.nickName)
+            remoteViews.setTextViewText(R.id.nickName, UserBean2.nickName)
         }
 
         if ("1" == UserBean2.isPlusVip) {
-            remoteViews!!.setViewVisibility(R.id.plusIcon, View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.plusIcon, View.VISIBLE)
         } else {
-            remoteViews!!.setViewVisibility(R.id.plusIcon, View.GONE)
+            remoteViews.setViewVisibility(R.id.plusIcon, View.GONE)
         }
 
         if (TextUtils.isEmpty(UserBean2.updateTips)) {
-            remoteViews!!.setViewVisibility(R.id.haveNewVersion, View.GONE)
+            remoteViews.setViewVisibility(R.id.haveNewVersion, View.GONE)
         } else {
-            remoteViews!!.setViewVisibility(R.id.haveNewVersion, View.VISIBLE)
-            remoteViews!!.setTextViewText(R.id.haveNewVersion, UserBean2.updateTips)
+            remoteViews.setViewVisibility(R.id.haveNewVersion, View.VISIBLE)
+            remoteViews.setTextViewText(R.id.haveNewVersion, UserBean2.updateTips)
         }
 
-        remoteViews!!.setTextViewText(R.id.beanNum, UserBean2.beanNum)
-        remoteViews!!.setTextViewText(R.id.todayBean, "+" + UserBean2.todayBean)
-        remoteViews!!.setTextViewText(R.id.todayBeanNum, UserBean2.todayBean.toString())
-        remoteViews!!.setTextViewText(R.id.oneAgoBeanNum, UserBean2.ago1Bean.toString())
-        remoteViews!!.setTextViewText(R.id.updateTime, "数据更新于:" + getCurrentData())
-        remoteViews!!.setTextViewText(R.id.hongbao, UserBean2.hb)
+        remoteViews.setTextViewText(R.id.beanNum, UserBean2.beanNum)
+        remoteViews.setTextViewText(R.id.todayBean, "+" + UserBean2.todayBean)
+        remoteViews.setTextViewText(R.id.todayBeanNum, UserBean2.todayBean.toString())
+        remoteViews.setTextViewText(R.id.oneAgoBeanNum, UserBean2.ago1Bean.toString())
+        remoteViews.setTextViewText(R.id.updateTime, "数据更新于:" + getCurrentData())
+        remoteViews.setTextViewText(R.id.hongbao, UserBean2.hb)
         try {
             if (getCurrentHH() + UserBean2.countdownTime > 24) {
-                remoteViews!!.setTextViewText(R.id.guoquHb, "明日过期:" + UserBean2.gqhb)
+                remoteViews.setTextViewText(R.id.guoquHb, "明日过期:" + UserBean2.gqhb)
             } else {
-                remoteViews!!.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean2.gqhb)
+                remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean2.gqhb)
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            remoteViews!!.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean2.gqhb)
+            remoteViews.setTextViewText(R.id.guoquHb, "今日过期:" + UserBean2.gqhb)
         }
-        remoteViews!!.setTextViewText(R.id.jingXiang, UserBean2.jxiang)
+        remoteViews.setTextViewText(R.id.jingXiang, UserBean2.jxiang)
 
         val cleatIntent = Intent()
         cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         cleatIntent.action = "com.scott.sayhi2"
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 1, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-        remoteViews!!.setOnClickPendingIntent(R.id.headImg, clearIntent3)
+        remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3)
 
         if (TextUtils.isEmpty(UserBean2.headImageUrl)) {
             Glide.with(MyApplication.mInstance)
@@ -286,7 +286,7 @@ object WidgetUpdateDataUtil2 {
                 .into(object : SimpleTarget<Drawable?>() {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
-                        remoteViews!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
+                        remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
                         pullWidget()
                     }
 
@@ -300,7 +300,7 @@ object WidgetUpdateDataUtil2 {
                 .into(object : SimpleTarget<Drawable?>() {
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
                         val head = BitmapUtil.drawableToBitmap(resource)
-                        remoteViews!!.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
+                        remoteViews.setImageViewBitmap(R.id.headImg, BitmapUtil.createCircleBitmap(head))
                         pullWidget()
                     }
 

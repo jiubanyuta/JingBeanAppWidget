@@ -33,7 +33,7 @@ import java.lang.Exception
  * Description
  */
 object WidgetUpdateDataUtil1 {
-    private var remoteViews: RemoteViews? = null
+    private lateinit var remoteViews: RemoteViews
     private var gson = Gson()
     private var page = 1
     private var todayTime: Long = 0
@@ -234,7 +234,7 @@ object WidgetUpdateDataUtil1 {
             remoteViews!!.setViewVisibility(R.id.tips, View.GONE)
         } else {
             remoteViews!!.setViewVisibility(R.id.updateTime, View.VISIBLE)
-            remoteViews!!.setViewVisibility(R.id.tips, View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.tips, View.VISIBLE)
         }
 
         if ("1" == getString("hideNichen")) {
