@@ -27,6 +27,8 @@
 
         <activity android:name=".MuchCkActivity" />
 
+        <activity android:name=".MyWebActivity" />
+
         <receiver
             android:name=".widget.MyAppWidgetProvider"
             android:label="帐号1">
