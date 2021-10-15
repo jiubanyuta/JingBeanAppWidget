@@ -75,6 +75,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp_5"
                 android:layout_marginRight="@dimen/dp_5"
                 android:layout_weight="1"
@@ -86,6 +87,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp_5"
                 android:layout_marginRight="@dimen/dp_5"
                 android:layout_weight="1"
@@ -97,6 +99,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp_5"
                 android:layout_marginRight="@dimen/dp_5"
                 android:layout_weight="1"
@@ -108,11 +111,24 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp_5"
                 android:layout_marginRight="@dimen/dp_5"
                 android:layout_weight="1"
                 android:background="@drawable/background_count_down_bac"
                 android:text="15DP"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_12" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_weight="1"
+                android:background="@drawable/background_count_down_bac"
+                android:text="20DP"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dp_12" />
         </LinearLayout>
