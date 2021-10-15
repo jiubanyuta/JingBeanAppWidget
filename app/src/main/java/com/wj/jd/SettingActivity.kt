@@ -52,5 +52,30 @@ class SettingActivity : BaseActivity() {
             WidgetUpdateDataUtil.updateWidget("ck")
             Toast.makeText(this, "小组件状态更新完毕", Toast.LENGTH_SHORT).show()
         }
+
+        padding0.setOnClickListener {
+            CacheUtil.putString("paddingType", "padding0")
+            paddingTip.text = "无边距"
+        }
+
+        padding5.setOnClickListener {
+            CacheUtil.putString("paddingType", "padding5")
+            paddingTip.text = "5dp"
+        }
+
+        padding10.setOnClickListener {
+            CacheUtil.putString("paddingType", "padding10")
+            paddingTip.text = "10dp"
+        }
+
+        padding15.setOnClickListener {
+            CacheUtil.putString("paddingType", "padding15")
+            paddingTip.text = "15dp"
+        }
+
+        padding20.setOnClickListener {
+            CacheUtil.putString("paddingType", "padding20")
+            paddingTip.text = "20dp"
+        }
     }
 }
