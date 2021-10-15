@@ -260,6 +260,18 @@ object WidgetUpdateDataUtil {
             remoteViews.setTextViewText(R.id.haveNewVersion, UserBean.updateTips)
         }
 
+        var paddingType = CacheUtil.getString("paddingType")
+        if (TextUtils.isEmpty(paddingType) || "padding15" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_15.dmToPx(), 0, R.dimen.dp_15.dmToPx(), 0)
+        } else if ("padding0" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, 0, 0, 0, 0)
+        } else if ("padding5" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_5.dmToPx(), 0, R.dimen.dp_5.dmToPx(), 0)
+        } else if ("padding10" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_10.dmToPx(), 0, R.dimen.dp_10.dmToPx(), 0)
+        }else if ("padding20" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_20.dmToPx(), 0, R.dimen.dp_20.dmToPx(), 0)
+        }
 
         remoteViews.setTextViewText(R.id.beanNum, UserBean.beanNum)
         remoteViews.setTextViewText(R.id.todayBean, "+" + UserBean.todayBean)

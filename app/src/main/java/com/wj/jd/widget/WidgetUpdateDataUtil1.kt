@@ -256,6 +256,19 @@ object WidgetUpdateDataUtil1 {
             remoteViews!!.setTextViewText(R.id.haveNewVersion, UserBean1.updateTips)
         }
 
+        var paddingType = CacheUtil.getString("paddingType")
+        if (TextUtils.isEmpty(paddingType) || "padding15" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_15.dmToPx(), 0, R.dimen.dp_15.dmToPx(), 0)
+        } else if ("padding0" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, 0, 0, 0, 0)
+        } else if ("padding5" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_5.dmToPx(), 0, R.dimen.dp_5.dmToPx(), 0)
+        } else if ("padding10" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_10.dmToPx(), 0, R.dimen.dp_10.dmToPx(), 0)
+        }else if ("padding20" == paddingType) {
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_20.dmToPx(), 0, R.dimen.dp_20.dmToPx(), 0)
+        }
+
         remoteViews!!.setTextViewText(R.id.beanNum, UserBean1.beanNum)
         remoteViews!!.setTextViewText(R.id.todayBean, "+" + UserBean1.todayBean)
         remoteViews!!.setTextViewText(R.id.todayBeanNum, UserBean1.todayBean.toString())
