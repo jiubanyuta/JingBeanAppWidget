@@ -3,15 +3,12 @@ package com.wj.jd.widget
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
-import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -22,7 +19,6 @@ import com.wj.jd.bean.JingDouBean
 import com.wj.jd.bean.RedPacket
 import com.wj.jd.bean.UserBean
 import com.wj.jd.bean.VersionBean
-import com.wj.jd.dialog.NewStyleDialog
 import com.wj.jd.util.*
 import com.wj.jd.util.CacheUtil.getString
 import com.wj.jd.util.TimeUtil.getCurrentData
