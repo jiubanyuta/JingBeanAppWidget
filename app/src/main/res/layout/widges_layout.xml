@@ -485,7 +485,8 @@
                         android:singleLine="true"
                         android:text="-- "
                         android:textColor="#FF0000"
-                        android:textSize="@dimen/dp_11" />
+                        android:textSize="@dimen/dp_11"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/guoquHb"
