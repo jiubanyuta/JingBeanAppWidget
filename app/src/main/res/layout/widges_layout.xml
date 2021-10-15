@@ -134,7 +134,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/dp_5"
-                android:layout_weight="1.82"
+                android:layout_weight="1.84"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -155,35 +155,27 @@
                         android:layout_height="@dimen/dp_20"
                         android:layout_weight="1" />
 
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/beanNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginRight="@dimen/dp_10">
+                        android:gravity="bottom"
+                        android:includeFontPadding="false"
+                        android:text="XXXX"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/dp_18" />
 
-                        <TextView
-                            android:id="@+id/beanNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:includeFontPadding="false"
-                            android:text="XXXX"
-                            android:textColor="#FF0000"
-                            android:textSize="@dimen/dp_18" />
-
-                        <TextView
-                            android:layout_toRightOf="@+id/beanNum"
-                            android:id="@+id/todayBean"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBaseline="@+id/beanNum"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="bottom"
-                            android:text="+xx"
-                            android:textColor="#008000"
-                            android:textSize="@dimen/dp_9" />
-
-                    </RelativeLayout>
-
+                    <TextView
+                        android:id="@+id/todayBean"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:gravity="bottom"
+                        android:text="+xx"
+                        android:textColor="#008000"
+                        android:textSize="@dimen/dp_9" />
 
                 </LinearLayout>
 
@@ -478,7 +470,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/dp_2"
-                        android:text="通用"
+                        android:text="通用红包"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dp_11" />
 
@@ -493,8 +485,7 @@
                         android:singleLine="true"
                         android:text="-- "
                         android:textColor="#FF0000"
-                        android:textSize="@dimen/dp_11"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/dp_11" />
 
                     <TextView
                         android:id="@+id/guoquHb"
