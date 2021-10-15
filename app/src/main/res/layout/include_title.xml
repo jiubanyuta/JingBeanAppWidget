@@ -15,6 +15,30 @@
         android:layout_height="@dimen/dp_40"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/title_bar_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_7"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="返回"
+                android:textColor="#ffffffff"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
