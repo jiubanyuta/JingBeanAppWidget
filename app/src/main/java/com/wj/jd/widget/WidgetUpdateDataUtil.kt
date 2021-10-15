@@ -3,12 +3,14 @@ package com.wj.jd.widget
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
+import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -257,6 +259,7 @@ object WidgetUpdateDataUtil {
             remoteViews.setViewVisibility(R.id.haveNewVersion, View.VISIBLE)
             remoteViews.setTextViewText(R.id.haveNewVersion, UserBean.updateTips)
         }
+
 
         remoteViews.setTextViewText(R.id.beanNum, UserBean.beanNum)
         remoteViews.setTextViewText(R.id.todayBean, "+" + UserBean.todayBean)
