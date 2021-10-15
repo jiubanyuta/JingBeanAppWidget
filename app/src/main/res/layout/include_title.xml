@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="@color/blue_primary"
     android:orientation="vertical">
 
     <View
@@ -10,20 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40">
+        android:layout_height="@dimen/dp_40"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="@dimen/dp_17"
             android:textColor="#FFFFFF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/dp_17" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

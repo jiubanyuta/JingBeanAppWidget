@@ -22,7 +22,6 @@ abstract class BaseActivity : AppCompatActivity() {
         titleTv = findViewById(R.id.title)
         currentActivity = this
         immersionBar {
-            statusBarColor(R.color.colorPrimary)
             statusBarView(barView)
             navigationBarColorTransform(R.color.white)
             navigationBarAlpha(1.0f)
