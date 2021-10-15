@@ -26,6 +26,7 @@ class CommonWebView : RelativeLayout {
     private lateinit var webView: WebView
     private lateinit var webProgress: WebProgress
     private var lastProgress = -1
+    var isGet = true
 
     constructor(context: Context?) : super(context) {
         initView()
@@ -41,6 +42,12 @@ class CommonWebView : RelativeLayout {
         defStyleAttr
     ) {
         initView()
+    }
+
+    var getCookie: OnGetCookie? = null
+
+    fun setOnGetCookieListener(onGetCookie: OnGetCookie) {
+        getCookie = onGetCookie
     }
 
     private fun initView() {
@@ -113,9 +120,14 @@ class CommonWebView : RelativeLayout {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 val cookieManager = CookieManager.getInstance()
-                val CookieStr = cookieManager.getCookie(url)
-                if(CookieStr.contains("pt_key")&&CookieStr.contains("pt_pin")){
-                    Toast.makeText(MyApplication.mInstance, CookieStr, Toast.LENGTH_SHORT).show()
+                var CookieStr = cookieManager.getCookie(url)
+                if (CookieStr.contains("pt_key") && CookieStr.contains("pt_pin") && isGet) {
+                    CookieStr = CookieStr.substring(CookieStr.indexOf("pt_key"))
+                    var key = CookieStr.substring(0, CookieStr.indexOf("pt_pin"))
+                    CookieStr = CookieStr.substring(CookieStr.indexOf("pt_pin"))
+                    var pin = CookieStr.substring(0, CookieStr.indexOf(";") + 1)
+                    getCookie?.get(key + pin)
+                    isGet = false
                 }
 
                 super.onPageFinished(view, url)
@@ -180,7 +192,7 @@ class CommonWebView : RelativeLayout {
         }
     }
 
-    fun forceRefresh() {
-        webView.loadUrl("javascript:window.location.reload( true )")
+    interface OnGetCookie {
+        fun get(ck: String)
     }
 }
