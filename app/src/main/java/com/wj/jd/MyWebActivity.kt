@@ -1,5 +1,7 @@
 package com.wj.jd
 
+import kotlinx.android.synthetic.main.activity_web.*
+
 class MyWebActivity : BaseActivity() {
 
     override fun setLayoutId(): Int {
@@ -11,6 +13,7 @@ class MyWebActivity : BaseActivity() {
     }
 
     override fun initData() {
+        mCommonWebView.loadUrl("https://www.baidu.com")
     }
 
     override fun setEvent() {

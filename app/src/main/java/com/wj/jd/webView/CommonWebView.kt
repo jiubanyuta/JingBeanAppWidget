@@ -11,9 +11,11 @@ import android.util.Log
 import android.view.View
 import android.webkit.*
 import android.widget.RelativeLayout
-import com.google.gson.Gson
 import com.wj.jd.R
 import com.wj.jd.util.dmToPx
+import android.widget.Toast
+import com.wj.jd.MyApplication
+
 
 /**
  * author wangjing
@@ -110,6 +112,10 @@ class CommonWebView : RelativeLayout {
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
+                val cookieManager = CookieManager.getInstance()
+                val CookieStr = cookieManager.getCookie(url)
+                Toast.makeText(MyApplication.mInstance, CookieStr, Toast.LENGTH_SHORT).show()
+
                 super.onPageFinished(view, url)
                 Log.i("CommonWebView", "onPageFinished")
             }

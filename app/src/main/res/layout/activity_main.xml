@@ -40,7 +40,6 @@
         android:textSize="@dimen/dp_16" />
 
     <Button
-        android:visibility="visible"
         android:id="@+id/setting"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
@@ -50,10 +49,23 @@
         android:background="@drawable/background_count_down_bac"
         android:text="小组件设置"
         android:textColor="@color/white"
-        android:textSize="@dimen/dp_16" />
+        android:textSize="@dimen/dp_16"
+        android:visibility="visible" />
 
     <Button
-        android:visibility="visible"
+        android:id="@+id/loginJd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_25"
+        android:background="@drawable/background_count_down_bac"
+        android:text="登录京东网页版获取CK"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_16"
+        android:visibility="visible" />
+
+    <Button
         android:id="@+id/noCK"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
@@ -63,7 +75,8 @@
         android:background="@drawable/background_count_down_bac"
         android:text="没有CK点这里"
         android:textColor="@color/white"
-        android:textSize="@dimen/dp_16" />
+        android:textSize="@dimen/dp_16"
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/addQQGroup"

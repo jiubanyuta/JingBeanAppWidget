@@ -186,6 +186,11 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        loginJd.setOnClickListener {
+            val intent = Intent(this, MyWebActivity::class.java)
+            startActivity(intent)
+        }
+
         updateCK.setOnClickListener {
             if (TextUtils.isEmpty(inputCK.text.toString())) {
                 Toast.makeText(this, "CK为空，添加失败", Toast.LENGTH_SHORT).show()
