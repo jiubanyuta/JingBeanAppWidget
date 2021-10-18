@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_25"
         android:background="@drawable/background_count_down_bac"
-        android:text="更新CK状态"
+        android:text="更新CK"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_16" />
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_25"
         android:background="@drawable/background_count_down_bac"
-        android:text="多账号设置"
+        android:text="多账号"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_16" />
 
@@ -60,7 +60,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_25"
         android:background="@drawable/background_count_down_bac"
-        android:text="登录京东网页版自动获取CK"
+        android:text="获取CK"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_16"
         android:visibility="visible" />
@@ -73,7 +73,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_25"
         android:background="@drawable/background_count_down_bac"
-        android:text="没有CK点这里"
+        android:text="挂豆子"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_16"
         android:visibility="visible" />
@@ -86,7 +86,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_25"
         android:background="@drawable/background_count_down_bac"
-        android:text="点击加入QQ交流群"
+        android:text="加入Q群"
         android:textColor="@color/white"
         android:textSize="@dimen/dp_16"
         android:visibility="visible" />
