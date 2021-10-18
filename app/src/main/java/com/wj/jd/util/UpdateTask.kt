@@ -13,18 +13,8 @@ object UpdateTask {
     var handler = Handler(Looper.getMainLooper())
 
     fun updateAll() {
-        handler.post {
-            WidgetUpdateDataUtil1.updateWidget("ck")
-
-        }
-
-        handler.postDelayed({
-            WidgetUpdateDataUtil1.updateWidget("ck1")
-        }, 1500)
-
-
-        handler.postDelayed({
-            WidgetUpdateDataUtil1.updateWidget("ck2")
-        }, 3000)
+        WidgetUpdateDataUtil1.updateWidget("ck")
+        WidgetUpdateDataUtil1.updateWidget("ck1")
+        WidgetUpdateDataUtil1.updateWidget("ck2")
     }
 }

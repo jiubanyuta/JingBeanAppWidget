@@ -45,7 +45,8 @@ object WidgetUpdateDataUtil2 {
         thisKey = key
         val str = HttpUtil.getCK(thisKey)
         if (TextUtils.isEmpty(str)) return
-        HttpUtil.cancelAll()
+
+        HttpUtil.cancel(thisKey)
 
         remoteViews = RemoteViews(MyApplication.mInstance.packageName, R.layout.widges_layout)
         pullWidget()

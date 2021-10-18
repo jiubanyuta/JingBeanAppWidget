@@ -48,7 +48,7 @@ object HttpUtil {
         str = str + "Referer" + "=" + "https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&"
         str = str + "Accept-Encoding" + "=" + "gzip, deflate, br"
         OkGo.get<String>("https://me-api.jd.com/user_new/info/GetJDUserInfoUnion")
-            .tag("context")
+            .tag(key)
             .headers("Host", "me-api.jd.com")
             .headers("Accept", "*/*")
             .headers("Connection", "keep-alive")
@@ -70,7 +70,7 @@ object HttpUtil {
         val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>("https://wxapp.m.jd.com/kwxhome/myJd/home.json?&useGuideModule=0&bizId=&brandId=&fromType=wxapp&timestamp=" + System.currentTimeMillis())
-            .tag("context")
+            .tag(key)
             .headers("Cookie", str)
             .headers("content-type", "application/x-www-form-urlencoded")
             .headers("Connection", "keep-alive")
@@ -93,7 +93,7 @@ object HttpUtil {
         val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         OkGo.post<String>("https://api.m.jd.com/client.action?functionId=getJingBeanBalanceDetail")
-            .tag("context")
+            .tag(key)
             .params("body", "{\"pageSize\":\"20\",\"page\":\"$page\"}")
             .params("appid", "ld")
             .headers(
@@ -120,7 +120,7 @@ object HttpUtil {
         val str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         OkGo.get<String>(path)
-            .tag("context")
+            .tag(key)
             .headers("Host", "m.jingxi.com")
             .headers("Accept", "*/*")
             .headers("Connection", "keep-alive")
@@ -140,7 +140,7 @@ object HttpUtil {
     }
 
 
-    private fun cancel(tag: Any) {
+    public fun cancel(tag: Any) {
         OkGo.getInstance().cancelTag(tag)
     }
 
