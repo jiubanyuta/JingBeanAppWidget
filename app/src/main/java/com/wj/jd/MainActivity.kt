@@ -18,10 +18,7 @@ import com.liulishuo.filedownloader.FileDownloader
 import com.wj.jd.bean.SimpleFileDownloadListener
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.dialog.NewStyleDialog
-import com.wj.jd.util.CacheUtil
-import com.wj.jd.util.DeviceUtil
-import com.wj.jd.util.HttpUtil
-import com.wj.jd.util.StringCallBack
+import com.wj.jd.util.*
 import com.wj.jd.widget.WidgetUpdateDataUtil
 import com.wj.jd.widget.WidgetUpdateDataUtil1
 import com.wj.jd.widget.WidgetUpdateDataUtil2
@@ -55,9 +52,7 @@ class MainActivity : BaseActivity() {
         * app进入重新启动更新数据后台服务
         * */
         if ("1" != CacheUtil.getString("startUpdateService")) {
-            WidgetUpdateDataUtil.updateWidget("ck")
-            WidgetUpdateDataUtil1.updateWidget("ck1")
-            WidgetUpdateDataUtil1.updateWidget("ck2")
+            UpdateTask.updateAll()
         }
     }
 
