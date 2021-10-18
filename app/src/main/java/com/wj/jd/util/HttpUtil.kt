@@ -25,7 +25,7 @@ object HttpUtil {
     @JvmOverloads
     fun getAppVer(callback: StringCallBack?) {
         OkGo.get<String>("http://101.35.95.165/update")
-            .tag("context")
+            .tag("all")
             .headers("User-Agent", "Mozilla/5.0 (Linux; U; Android 8.0.0; zh-cn; MI 5 Build/OPR1.170623.032) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30")
             .execute(object : StringCallback() {
                 override fun onSuccess(response: Response<String>) {
