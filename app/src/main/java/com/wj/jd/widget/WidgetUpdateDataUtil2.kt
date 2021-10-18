@@ -49,7 +49,6 @@ object WidgetUpdateDataUtil2 {
         HttpUtil.cancel(thisKey)
 
         remoteViews = RemoteViews(MyApplication.mInstance.packageName, R.layout.widges_layout)
-        pullWidget()
 
         checkUpdate()
 
@@ -157,6 +156,7 @@ object WidgetUpdateDataUtil2 {
         })
     }
 
+    @Synchronized
     private fun getJingBeanData() {
         HttpUtil.getJD(thisKey, page, object : StringCallBack {
             override fun onSuccess(result: String) {

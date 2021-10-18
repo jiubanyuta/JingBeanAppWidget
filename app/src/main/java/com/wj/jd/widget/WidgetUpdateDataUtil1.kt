@@ -158,6 +158,7 @@ object WidgetUpdateDataUtil1 {
         })
     }
 
+    @Synchronized
     private fun getJingBeanData() {
         HttpUtil.getJD(thisKey, page, object : StringCallBack {
             override fun onSuccess(result: String) {
