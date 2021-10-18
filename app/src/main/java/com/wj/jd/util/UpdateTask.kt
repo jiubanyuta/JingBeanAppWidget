@@ -20,7 +20,7 @@ object UpdateTask {
 
         handler.postDelayed({
             WidgetUpdateDataUtil1.updateWidget("ck1")
-        }, 3000)
+        }, 1500)
 
 
         handler.postDelayed({
