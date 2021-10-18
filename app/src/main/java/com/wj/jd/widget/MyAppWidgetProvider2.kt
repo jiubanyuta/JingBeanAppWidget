@@ -4,8 +4,12 @@ import android.appwidget.AppWidgetProvider
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
+import android.content.ComponentName
 import android.content.Context
 import android.os.Bundle
+import android.widget.RemoteViews
+import com.wj.jd.R
+import com.wj.jd.util.dmToPx
 
 class MyAppWidgetProvider2 : AppWidgetProvider() {
 
@@ -14,7 +18,10 @@ class MyAppWidgetProvider2 : AppWidgetProvider() {
      */
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         for (appwidgetId in appWidgetIds) {
-
+            val remoteViews = RemoteViews(context.packageName, R.layout.widges_layout)
+            remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_15.dmToPx(), 0, R.dimen.dp_15.dmToPx(), 0)
+            val name = ComponentName(context, MyAppWidgetProvider2::class.java)
+            appWidgetManager.updateAppWidget(name, remoteViews)
         }
     }
 
