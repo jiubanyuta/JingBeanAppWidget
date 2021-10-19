@@ -2,6 +2,7 @@ package com.wj.jd.util
 
 import android.os.Handler
 import android.os.Looper
+import com.wj.jd.widget.WidgetUpdateDataUtil
 
 /**
  * author wangjing
@@ -12,8 +13,8 @@ object UpdateTask {
     var handler = Handler(Looper.getMainLooper())
 
     fun updateAll() {
-        WidgetUpdateDataUtil1.updateWidget("ck")
-        WidgetUpdateDataUtil1.updateWidget("ck1")
-        WidgetUpdateDataUtil1.updateWidget("ck2")
+        WidgetUpdateDataUtil.updateWidget("ck")
+        WidgetUpdateDataUtil.updateWidget("ck1")
+        WidgetUpdateDataUtil.updateWidget("ck2")
     }
 }
