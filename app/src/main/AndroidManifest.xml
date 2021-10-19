@@ -31,7 +31,8 @@
 
         <receiver
             android:name=".widget.MyAppWidgetProvider"
-            android:label="帐号1">
+            android:label="帐号1"
+            android:process=":RunJingBeanWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -43,7 +44,8 @@
 
         <receiver
             android:name=".widget.MyAppWidgetProvider1"
-            android:label="帐号2">
+            android:label="帐号2"
+            android:process=":RunJingBeanWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -55,7 +57,8 @@
 
         <receiver
             android:name=".widget.MyAppWidgetProvider2"
-            android:label="帐号3">
+            android:label="帐号3"
+            android:process=":RunJingBeanWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
