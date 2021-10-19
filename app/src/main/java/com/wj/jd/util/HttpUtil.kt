@@ -40,6 +40,7 @@ object HttpUtil {
 
     @JvmOverloads
     fun getUserInfo(key: String, callback: StringCallBack?) {
+        Log.i("====key", key)
         var str = getCK(key)
         if (TextUtils.isEmpty(str)) return
         str =
