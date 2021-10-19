@@ -1,6 +1,5 @@
 package com.wj.jd.widget
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetProvider
 import android.appwidget.AppWidgetManager
 import android.content.Intent
@@ -8,7 +7,6 @@ import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
 import android.content.ComponentName
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.RemoteViews
 import com.wj.jd.R
 import com.wj.jd.util.dmToPx
