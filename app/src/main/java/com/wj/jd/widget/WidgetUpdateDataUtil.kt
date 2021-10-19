@@ -302,9 +302,16 @@ object WidgetUpdateDataUtil {
         }
         remoteViews.setTextViewText(R.id.jingXiang, UserBean.jxiang)
 
+
         val cleatIntent = Intent()
         cleatIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        cleatIntent.action = "com.scott.sayhi"
+        cleatIntent.action = if ("ck" == thisKey) {
+            "com.scott.sayhi"
+        } else if ("ck1" == thisKey) {
+            "com.scott.sayhi1"
+        } else {
+            "com.scott.sayhi2"
+        }
         val clearIntent3 = PendingIntent.getBroadcast(MyApplication.mInstance, 0, cleatIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         remoteViews.setOnClickPendingIntent(R.id.headImg, clearIntent3)
 
