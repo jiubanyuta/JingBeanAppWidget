@@ -47,8 +47,6 @@ object WidgetUpdateDataUtil {
         val str = HttpUtil.getCK(thisKey)
         if (TextUtils.isEmpty(str)) return
 
-        HttpUtil.cancel(thisKey)
-
         remoteViews = RemoteViews(MyApplication.mInstance.packageName, R.layout.widges_layout)
         remoteViews.setViewPadding(R.id.rootParent, R.dimen.dp_15.dmToPx(), 0, R.dimen.dp_15.dmToPx(), 0)
         pullWidget()
