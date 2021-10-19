@@ -21,7 +21,6 @@ import com.wj.jd.bean.RedPacket
 import com.wj.jd.bean.UserBean
 import com.wj.jd.bean.VersionBean
 import com.wj.jd.util.*
-import com.wj.jd.util.CacheUtil.getString
 import com.wj.jd.util.TimeUtil.getCurrentData
 import com.wj.jd.util.TimeUtil.getCurrentHH
 import com.wj.jd.util.TimeUtil.parseTime
@@ -182,7 +181,12 @@ object WidgetUpdateDataUtil {
                         page++
                         getJingBeanData()
                     } else {
-                        get1AgoBeanData()
+                        var oneAgoJBeanNum = CacheUtil.getString("")
+                        if (TextUtils.isEmpty(oneAgoJBeanNum)) {
+                            get1AgoBeanData()
+                        } else {
+                            UserBean.ago1Bean = oneAgoJBeanNum?.toInt()!!
+                        }
                         setData()
                     }
                 } catch (e: Exception) {
@@ -231,7 +235,7 @@ object WidgetUpdateDataUtil {
     }
 
     private fun setData() {
-        if ("1" == getString("hideTips")) {
+        if ("1" == CacheUtil.getString("hideTips")) {
             remoteViews.setViewVisibility(R.id.updateTime, View.GONE)
             remoteViews.setViewVisibility(R.id.tips, View.GONE)
         } else {
@@ -239,7 +243,7 @@ object WidgetUpdateDataUtil {
             remoteViews.setViewVisibility(R.id.tips, View.VISIBLE)
         }
 
-        if ("1" == getString("hideNichen")) {
+        if ("1" == CacheUtil.getString("hideNichen")) {
             remoteViews.setTextViewText(R.id.nickName, "***")
         } else {
             remoteViews.setTextViewText(R.id.nickName, UserBean.nickName)
