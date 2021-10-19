@@ -181,7 +181,7 @@ object WidgetUpdateDataUtil {
                         page++
                         getJingBeanData()
                     } else {
-                        var oneAgoJBeanNum = CacheUtil.getString("")
+                        var oneAgoJBeanNum = CacheUtil.getString("oneAgoJBeanNum")
                         if (TextUtils.isEmpty(oneAgoJBeanNum)) {
                             get1AgoBeanData()
                         } else {
@@ -222,6 +222,7 @@ object WidgetUpdateDataUtil {
                         page++
                         get1AgoBeanData()
                     } else {
+                        CacheUtil.putString("oneAgoJBeanNum", UserBean.ago1Bean.toString())
                         setData()
                     }
                 } catch (e: Exception) {
