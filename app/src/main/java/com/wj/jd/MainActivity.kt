@@ -7,7 +7,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
-import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -20,12 +19,8 @@ import com.wj.jd.bean.VersionBean
 import com.wj.jd.dialog.NewStyleDialog
 import com.wj.jd.util.*
 import com.wj.jd.widget.WidgetUpdateDataUtil
-import com.wj.jd.widget.WidgetUpdateDataUtil1
-import com.wj.jd.widget.WidgetUpdateDataUtil2
 import com.zhy.base.fileprovider.FileProvider7
 import java.io.File
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 class MainActivity : BaseActivity() {
     private lateinit var notificationUpdateReceiver: NotificationUpdateReceiver
@@ -235,14 +230,14 @@ class MainActivity : BaseActivity() {
     inner class NotificationUpdateReceiver1 : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver1")
-            WidgetUpdateDataUtil1.updateWidget("ck1")
+            WidgetUpdateDataUtil.updateWidget("ck1")
         }
     }
 
     inner class NotificationUpdateReceiver2 : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             Log.i("====", "NotificationUpdateReceiver1")
-            WidgetUpdateDataUtil2.updateWidget("ck2")
+            WidgetUpdateDataUtil.updateWidget("ck2")
         }
     }
 }

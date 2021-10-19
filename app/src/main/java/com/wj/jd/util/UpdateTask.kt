@@ -2,7 +2,6 @@ package com.wj.jd.util
 
 import android.os.Handler
 import android.os.Looper
-import com.wj.jd.widget.WidgetUpdateDataUtil1
 
 /**
  * author wangjing
