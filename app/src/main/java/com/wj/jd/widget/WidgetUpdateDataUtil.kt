@@ -212,7 +212,7 @@ object WidgetUpdateDataUtil {
                     for (i in dataList.indices) {
                         val detail = dataList[i]
                         val beanDay = parseTime(detail.date)!!
-                        if (beanDay < todayTime && beanDay > yesterdayTime) {
+                        if (beanDay in (yesterdayTime + 1) until todayTime) {
                             if (detail.amount > 0) {
                                 UserBean.ago1Bean = UserBean.ago1Bean + detail.amount
                             }
