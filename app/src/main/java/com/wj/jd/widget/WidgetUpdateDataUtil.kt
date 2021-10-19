@@ -181,10 +181,13 @@ object WidgetUpdateDataUtil {
                         page++
                         getJingBeanData()
                     } else {
-                        var oneAgoJBeanNum = CacheUtil.getString("oneAgoJBeanNum")
+                        Log.i("====", TimeUtil.getYesterDay(-1))
+                        var oneAgoJBeanNum = CacheUtil.getString(TimeUtil.getYesterDay(-1))
                         if (TextUtils.isEmpty(oneAgoJBeanNum)) {
+                            Log.i("====", "昨天缓存数据为空 请求后台")
                             get1AgoBeanData()
                         } else {
+                            Log.i("====", "使用缓存数据")
                             UserBean.ago1Bean = oneAgoJBeanNum?.toInt()!!
                         }
                         setData()
@@ -222,7 +225,7 @@ object WidgetUpdateDataUtil {
                         page++
                         get1AgoBeanData()
                     } else {
-                        CacheUtil.putString("oneAgoJBeanNum", UserBean.ago1Bean.toString())
+                        CacheUtil.putString(TimeUtil.getYesterDay(-1), UserBean.ago1Bean.toString())
                         setData()
                     }
                 } catch (e: Exception) {

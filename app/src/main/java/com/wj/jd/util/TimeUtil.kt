@@ -38,4 +38,10 @@ object TimeUtil {
         }
         return 0L
     }
+
+    fun getYesterDay(ago: Int): String {
+        val cal = Calendar.getInstance()
+        cal.add(Calendar.DATE, ago)
+        return SimpleDateFormat("yyyy-MM-dd ").format(cal.time)
+    }
 }
