@@ -21,6 +21,26 @@ class SettingActivity : BaseActivity() {
         hideNichen.isChecked = "1" == CacheUtil.getString("hideTips")
 
         startUpdateService.isChecked = "1" != CacheUtil.getString("startUpdateService")
+
+        val paddingType = CacheUtil.getString("paddingType")
+        paddingTip.text = when (paddingType) {
+            "padding0" -> {
+                "无边距"
+            }
+            "padding5" -> {
+                "5dp"
+            }
+            "padding10" -> {
+                "10dp"
+            }
+            "padding15" -> {
+                "15dp"
+            }
+            "padding20" -> {
+                "20dp"
+            }
+            else -> "15dp"
+        }
     }
 
     override fun setEvent() {
