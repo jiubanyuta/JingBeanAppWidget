@@ -1,0 +1,1 @@
+名称：android cin n non：n推送：n分支：[master]n拉请求：n分支：[master]n n作业：n构建：n n运行-on：Ubuntu-最新n步：n-use：action/checkout@v2 n-name：set up jdk 11 n use：action/setup-java@v2 n with：n java-version：‘11’n分发版：‘采取’n‘n缓存：Gradle n缓存N-name：授予gradlew n run的执行权限：chmod+x gradlew n-name：Build with gradle n run：./gradlew Build
